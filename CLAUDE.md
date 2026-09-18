@@ -19,11 +19,12 @@ All user facing content stays in Bahasa Indonesia.
 
 ## Data
 Content lives in src/data/*.json, imported as @/src/data/... (tsconfig maps @/* to ./*).
-destinations.json holds all 12 destinations plus the category list used by the
-/destinasi filter. Legacy had no real descriptions or practical info — every det*.html
-shared the same Lorem ipsum and the same copy-pasted hours/prices — so descriptions
-were rewritten and hours, prices and coordinates were researched from the web. Each
-destination carries sources (URLs) and lastVerified.
+destinations.json holds all 50 destinations plus the region and category lists used
+by the /destinasi filters. The first 12 came from legacy; the other 38 were added by
+research and have source: null. Legacy had no real descriptions or practical info —
+every det*.html shared the same Lorem ipsum and the same copy-pasted hours/prices —
+so descriptions were rewritten and hours, prices and coordinates were researched from
+the web. Each destination carries sources (URLs) and lastVerified.
 
 Conventions:
 - A null value means "not available"; the UI hides that piece of practical info
@@ -32,16 +33,50 @@ Conventions:
   (all|weekday|weekend), min, max. min === max is a fixed price, min < max is a
   range. Render every row so weekday/weekend differences are visible. An empty
   array means no price was found — hide the whole price block.
+- A price that is not per person (a jeep hire, a village package) does not belong
+  in rates; it would render as a per-person ticket. Put the figures in info.notes
+  and leave rates empty.
 - needsVerification lists fields that hold a value that is not yet trusted (dated
   or conflicting sources). It is not a list of empty fields.
 - Jogja Bay Waterpark has rebranded to Waterboom Jogja; it uses the slug
   waterboom-jogja, with "jogja bay" kept in tags so search still finds it.
+
+### Photos
+Every image is { src, imageCredit } where imageCredit is { author, sourceUrl,
+license, licenseUrl }, or null only for leftover legacy photos of unknown
+provenance (gembira-loka, heha-ocean-view, waterboom-jogja).
+
+- Only these sources: Wikimedia Commons, Unsplash, Openverse, Flickr, Pexels.
+  check-destinations.mjs enforces the host allowlist on sourceUrl.
+- Only CC0, CC BY, CC BY-SA or public domain. NC and ND are rejected by the
+  validator. Openverse is the easiest way to search Flickr under those filters;
+  Pexels and Flickr both need an API key for direct search, Openverse does not.
+- The photo must clearly show the actual place. A generic stock shot that merely
+  matches the keyword is worse than no photo — leave it out and set published false.
+- Minimum 1600px wide at the source. Files are re-encoded to WebP, max 1600x1200,
+  quality 74, named <slug>-<n>.webp. One card plus up to three gallery images.
+- images.card may be null when no acceptable photo exists; gallery is then empty
+  too, and the UI shows the neutral NoPhoto panel instead of a photo.
+
+### published
+published is a boolean on every destination. It must be true exactly when the
+destination has a card image — the validator fails on any mismatch.
+
+Unpublished destinations stay in the JSON so the research is not lost, but they
+must not appear anywhere on the site. This is enforced in one place:
+src/lib/destinations.ts exports `destinations` already filtered to published
+entries, and `allDestinations` for tooling that genuinely needs the full list.
+Because the list page, filter counts, search, getRelated, the home page stats and
+generateStaticParams all read `destinations`, nothing else needs its own filter —
+so do not reintroduce reads of allDestinations in app code.
 
 ## Data Rules
 - Destination data lives in src/data/destinations.json. Never hardcode content in components.
 - Any practical info field that is null must be hidden in the UI, not shown as "-" or "N/A".
 - Format prices in the view layer as Indonesian rupiah (Rp40.000).
 - Show lastVerified as small muted text on detail pages ("Info diperbarui September 2026").
+- Run npm run check:data after touching destinations.json; it checks the schema,
+  the photo sources and licences, and the published/card invariant.
 - Events are out of scope for phase 1.
 
 ### Color (Yogyakarta: batik sogan, Merapi andesite stone, kraton gold)

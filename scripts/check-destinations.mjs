@@ -43,6 +43,16 @@ const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 const VISITORS = new Set(["local", "foreign"]);
 const DAYS = new Set(["all", "weekday", "weekend"]);
 
+// Host foto yang diizinkan: Wikimedia Commons, Unsplash, Openverse, Flickr, dan
+// Pexels. Berkasnya selalu disimpan ulang di repo; yang dicatat di sini adalah
+// halaman asalnya supaya atribusinya bisa ditelusuri kembali.
+const SUMBER_FOTO =
+  /^https:\/\/(commons\.wikimedia\.org|upload\.wikimedia\.org|unsplash\.com|openverse\.org|(www\.)?flickr\.com|live\.staticflickr\.com|(www\.)?pexels\.com)\//;
+
+// Proyek ini hanya memakai CC0, CC BY, CC BY-SA, dan domain publik.
+// NonCommercial dan NoDerivatives ditolak.
+const LISENSI_TERLARANG = /\b(nc|nd)\b/i;
+
 // Field yang boleh disebut di needsVerification.
 const VERIFIABLE = new Set([
   "info.openingHours",
@@ -67,6 +77,16 @@ for (const d of data.destinations) {
   if (!d.name) fail(at, "name kosong");
   if (!regionIds.has(d.region)) fail(at, `region tidak dikenal: ${d.region}`);
   if (!categoryIds.has(d.category)) fail(at, `category tidak dikenal: ${d.category}`);
+
+  // published harus sejalan dengan ada tidaknya foto kartu. Kalau tidak, situs
+  // bisa menampilkan kartu kosong atau menyembunyikan destinasi yang sudah siap.
+  if (typeof d.published !== "boolean") {
+    fail(at, `published bukan boolean: ${d.published}`);
+  } else if (d.published && !d.images?.card) {
+    fail(at, "published true tetapi belum punya foto kartu");
+  } else if (!d.published && d.images?.card) {
+    fail(at, "punya foto kartu tetapi published masih false");
+  }
 
   if (!Array.isArray(d.tags) || d.tags.length === 0) fail(at, "tags kosong");
   if (!d.shortDescription) fail(at, "shortDescription kosong");
@@ -125,7 +145,7 @@ for (const d of data.destinations) {
     if ((images.gallery ?? []).length > 0) {
       fail(at, "images.card null tetapi galeri terisi; angkat satu foto jadi card");
     } else {
-      warn(at, "belum ada foto berlisensi, kartu dan hero memakai panel polos");
+      warn(at, "belum ada foto berlisensi, published false dan tidak tampil di situs");
     }
   } else if (!images.card?.src) {
     fail(at, "images.card ada tetapi tanpa src");
@@ -147,12 +167,10 @@ for (const d of data.destinations) {
       warn(at, `${path.basename(image.src)} belum punya imageCredit`);
     } else if (!c || !c.author || !c.sourceUrl || !c.license || !c.licenseUrl) {
       fail(at, `imageCredit tidak lengkap pada ${image.src}`);
-    } else if (
-      !/^https:\/\/(commons\.wikimedia\.org|upload\.wikimedia\.org|unsplash\.com)\//.test(
-        c.sourceUrl
-      )
-    ) {
-      fail(at, `sumber foto di luar Wikimedia/Unsplash: ${c.sourceUrl}`);
+    } else if (!SUMBER_FOTO.test(c.sourceUrl)) {
+      fail(at, `sumber foto di luar daftar yang diizinkan: ${c.sourceUrl}`);
+    } else if (LISENSI_TERLARANG.test(c.license)) {
+      fail(at, `lisensi NC atau ND tidak boleh dipakai: ${c.license}`);
     }
   }
 

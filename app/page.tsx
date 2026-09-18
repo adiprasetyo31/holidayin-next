@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { DestinationCard } from "@/src/components/destination-card";
-import { ImageCredit } from "@/src/components/image-credit";
 import { buttonClass } from "@/src/components/ui/button";
 import {
   categories,
@@ -30,7 +29,7 @@ export default function Home() {
   );
 
   // Foto hero diambil dari data, bukan jalur yang ditulis tangan, supaya ikut
-  // berpindah saat berkas gambar diganti dan kreditnya tetap terbawa.
+  // berpindah saat berkas gambar diganti.
   const hero = getDestination(HERO)?.images.card;
 
   return (
@@ -79,12 +78,6 @@ export default function Home() {
               </li>
             ))}
           </ul>
-
-          <ImageCredit
-            credit={hero?.imageCredit ?? null}
-            tone="on-scrim"
-            className="mt-10"
-          />
         </div>
       </section>
 

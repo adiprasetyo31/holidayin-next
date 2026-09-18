@@ -13,7 +13,8 @@
       "region memakai id dari daftar regions; location.regency dihapus karena menyimpan fakta yang sama sebagai teks bebas.",
       "Setiap gambar adalah objek { src, imageCredit }. imageCredit memuat author, sourceUrl, license, dan licenseUrl. Foto hanya bersumber dari Wikimedia Commons atau Unsplash.",
       "images.card boleh null bila belum ada foto berlisensi yang layak; kartu dan hero memakai panel polos, bukan foto yang tidak nyambung. images.gallery ikut kosong dalam kasus itu.",
-      "Foto Commons diunduh ulang sebagai WebP lebar maksimum 1600 px dan diberi nama <slug>-<n>.webp. Foto warisan yang belum punya imageCredit tersisa di gembira-loka, heha-ocean-view, dan waterboom-jogja karena belum ada padanan berlisensi."
+      "Foto Commons diunduh ulang sebagai WebP lebar maksimum 1600 px dan diberi nama <slug>-<n>.webp. Foto warisan yang belum punya imageCredit tersisa di gembira-loka, heha-ocean-view, dan waterboom-jogja karena belum ada padanan berlisensi.",
+      "published menandai destinasi yang tampil di situs. Destinasi tanpa foto berlisensi diberi published false dan disembunyikan dari daftar, filter, pencarian, saran destinasi lain, angka di beranda, serta rute statis. Datanya tetap disimpan supaya bisa dinyalakan begitu fotonya ada."
     ],
     "imageRoot": "public/images/destinasi",
     "legacyImageRoot": "legacy/img/tempat"
@@ -50,6 +51,7 @@
       "name": "Alun-Alun Kidul",
       "region": "kota-yogyakarta",
       "category": "taman-hiburan",
+      "published": true,
       "tags": [
         "masangin",
         "ringin kembar",
@@ -131,6 +133,7 @@
       "name": "Gembira Loka",
       "region": "kota-yogyakarta",
       "category": "taman-hiburan",
+      "published": true,
       "tags": [
         "kebun binatang",
         "keluarga",
@@ -218,6 +221,7 @@
       "name": "Kampung Wisata Kotagede",
       "region": "kota-yogyakarta",
       "category": "desa-wisata",
+      "published": true,
       "tags": [
         "kerajinan perak",
         "mataram islam",
@@ -300,6 +304,7 @@
       "name": "Kawasan Malioboro",
       "region": "kota-yogyakarta",
       "category": "budaya",
+      "published": true,
       "tags": [
         "malioboro",
         "pedestrian",
@@ -382,6 +387,7 @@
       "name": "Keraton Ngayogyakarta Hadiningrat",
       "region": "kota-yogyakarta",
       "category": "budaya",
+      "published": true,
       "tags": [
         "keraton",
         "istana",
@@ -475,6 +481,7 @@
       "name": "Museum Benteng Vredeburg",
       "region": "kota-yogyakarta",
       "category": "budaya",
+      "published": true,
       "tags": [
         "museum",
         "benteng",
@@ -574,6 +581,7 @@
       "name": "Museum Sonobudoyo",
       "region": "kota-yogyakarta",
       "category": "budaya",
+      "published": true,
       "tags": [
         "museum",
         "wayang kulit",
@@ -666,6 +674,7 @@
       "name": "Pasar Beringharjo",
       "region": "kota-yogyakarta",
       "category": "kuliner",
+      "published": true,
       "tags": [
         "pasar tradisional",
         "batik",
@@ -747,6 +756,7 @@
       "name": "Taman Pintar",
       "region": "kota-yogyakarta",
       "category": "taman-hiburan",
+      "published": true,
       "tags": [
         "wisata edukasi",
         "sains",
@@ -826,6 +836,7 @@
       "name": "Taman Sari",
       "region": "kota-yogyakarta",
       "category": "budaya",
+      "published": true,
       "tags": [
         "kraton",
         "sejarah",
@@ -920,6 +931,7 @@
       "name": "Agrowisata Bhumi Merapi",
       "region": "sleman",
       "category": "taman-hiburan",
+      "published": false,
       "tags": [
         "wisata edukasi",
         "satwa",
@@ -972,6 +984,7 @@
       "name": "Candi Ijo",
       "region": "sleman",
       "category": "budaya",
+      "published": true,
       "tags": [
         "candi",
         "sunset",
@@ -1068,6 +1081,7 @@
       "name": "Candi Prambanan",
       "region": "sleman",
       "category": "budaya",
+      "published": true,
       "tags": [
         "candi",
         "situs warisan dunia",
@@ -1171,6 +1185,7 @@
       "name": "Desa Wisata Pentingsari",
       "region": "sleman",
       "category": "desa-wisata",
+      "published": false,
       "tags": [
         "desa wisata",
         "live in",
@@ -1214,6 +1229,7 @@
       "name": "Keraton Ratu Boko",
       "region": "sleman",
       "category": "budaya",
+      "published": true,
       "tags": [
         "situs purbakala",
         "gapura",
@@ -1313,6 +1329,7 @@
       "name": "Lava Tour Merapi Kaliadem",
       "region": "sleman",
       "category": "alam",
+      "published": true,
       "tags": [
         "jeep",
         "merapi",
@@ -1367,6 +1384,7 @@
       "name": "Museum Ullen Sentalu",
       "region": "sleman",
       "category": "budaya",
+      "published": true,
       "tags": [
         "museum",
         "batik",
@@ -1459,6 +1477,7 @@
       "name": "Obelix Hills",
       "region": "sleman",
       "category": "kuliner",
+      "published": true,
       "tags": [
         "perbukitan",
         "sunset",
@@ -1538,6 +1557,7 @@
       "name": "Tebing Breksi",
       "region": "sleman",
       "category": "alam",
+      "published": true,
       "tags": [
         "tebing",
         "pahatan batu",
@@ -1635,6 +1655,7 @@
       "name": "Waterboom Jogja",
       "region": "sleman",
       "category": "taman-hiburan",
+      "published": true,
       "tags": [
         "waterpark",
         "keluarga",
@@ -1712,6 +1733,7 @@
       "name": "Desa Wisata Kasongan",
       "region": "bantul",
       "category": "desa-wisata",
+      "published": true,
       "tags": [
         "gerabah",
         "keramik",
@@ -1766,6 +1788,7 @@
       "name": "Desa Wisata Krebet",
       "region": "bantul",
       "category": "desa-wisata",
+      "published": false,
       "tags": [
         "batik kayu",
         "topeng",
@@ -1811,6 +1834,7 @@
       "name": "Gumuk Pasir Parangkusumo",
       "region": "bantul",
       "category": "alam",
+      "published": true,
       "tags": [
         "gumuk pasir",
         "barchan",
@@ -1898,6 +1922,7 @@
       "name": "Hutan Pinus Mangunan",
       "region": "bantul",
       "category": "alam",
+      "published": true,
       "tags": [
         "hutan",
         "udara sejuk",
@@ -1989,6 +2014,7 @@
       "name": "Kampung Batik Giriloyo",
       "region": "bantul",
       "category": "desa-wisata",
+      "published": true,
       "tags": [
         "batik tulis",
         "pewarna alami",
@@ -2016,7 +2042,15 @@
         "notes": "Masuk gazebo pamer tidak dipungut biaya. Kelas membatik dijual per paket: sekitar Rp25.000 per orang untuk membatik saja, Rp35.000 dengan kudapan, dan Rp55.000 dengan kudapan serta makan. Paket membatik syal mulai sekitar Rp100.000 per orang. Rombongan dianjurkan memesan lebih dulu."
       },
       "images": {
-        "card": null,
+        "card": {
+          "src": "/images/destinasi/kampung-batik-giriloyo-1.webp",
+          "imageCredit": {
+            "author": "Aconkyeah",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Maestro_Batik_Tulis_di_Imogiri.jpg",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+          }
+        },
         "gallery": []
       },
       "source": null,
@@ -2035,6 +2069,7 @@
       "name": "Kebun Buah Mangunan",
       "region": "bantul",
       "category": "alam",
+      "published": true,
       "tags": [
         "negeri di atas awan",
         "sunrise",
@@ -2130,6 +2165,7 @@
       "name": "Makam Raja-Raja Imogiri",
       "region": "bantul",
       "category": "budaya",
+      "published": true,
       "tags": [
         "makam raja",
         "mataram",
@@ -2213,6 +2249,7 @@
       "name": "Pantai Depok",
       "region": "bantul",
       "category": "pantai",
+      "published": true,
       "tags": [
         "seafood",
         "tempat pelelangan ikan",
@@ -2299,6 +2336,7 @@
       "name": "Pantai Goa Cemara",
       "region": "bantul",
       "category": "pantai",
+      "published": true,
       "tags": [
         "cemara udang",
         "konservasi penyu",
@@ -2387,6 +2425,7 @@
       "name": "Pantai Parangtritis",
       "region": "bantul",
       "category": "pantai",
+      "published": true,
       "tags": [
         "pantai selatan",
         "gumuk pasir",
@@ -2475,6 +2514,7 @@
       "name": "Desa Wisata Bobung",
       "region": "gunungkidul",
       "category": "desa-wisata",
+      "published": false,
       "tags": [
         "topeng kayu",
         "batik kayu",
@@ -2520,6 +2560,7 @@
       "name": "Goa Jomblang",
       "region": "gunungkidul",
       "category": "alam",
+      "published": true,
       "tags": [
         "caving",
         "cahaya surga",
@@ -2608,6 +2649,7 @@
       "name": "Goa Pindul",
       "region": "gunungkidul",
       "category": "alam",
+      "published": true,
       "tags": [
         "cave tubing",
         "sungai bawah tanah",
@@ -2685,6 +2727,7 @@
       "name": "Gunung Api Purba Nglanggeran",
       "region": "gunungkidul",
       "category": "alam",
+      "published": true,
       "tags": [
         "geopark",
         "pendakian",
@@ -2771,6 +2814,7 @@
       "name": "Heha Ocean View",
       "region": "gunungkidul",
       "category": "kuliner",
+      "published": true,
       "tags": [
         "tebing",
         "laut selatan",
@@ -2849,6 +2893,7 @@
       "name": "Heha Sky View",
       "region": "gunungkidul",
       "category": "kuliner",
+      "published": true,
       "tags": [
         "panorama",
         "restoran",
@@ -2940,6 +2985,7 @@
       "name": "Pantai Baron",
       "region": "gunungkidul",
       "category": "pantai",
+      "published": true,
       "tags": [
         "teluk",
         "sungai bawah tanah",
@@ -3017,6 +3063,7 @@
       "name": "Pantai Indrayanti",
       "region": "gunungkidul",
       "category": "pantai",
+      "published": true,
       "tags": [
         "pantai selatan",
         "pasir putih",
@@ -3097,6 +3144,7 @@
       "name": "Pantai Ngobaran",
       "region": "gunungkidul",
       "category": "pantai",
+      "published": true,
       "tags": [
         "pantai selatan",
         "pura",
@@ -3185,6 +3233,7 @@
       "name": "Pantai Timang",
       "region": "gunungkidul",
       "category": "pantai",
+      "published": true,
       "tags": [
         "gondola",
         "jembatan gantung",
@@ -3246,6 +3295,7 @@
       "name": "Desa Wisata Jatimulyo",
       "region": "kulon-progo",
       "category": "desa-wisata",
+      "published": true,
       "tags": [
         "pengamatan burung",
         "konservasi",
@@ -3300,6 +3350,7 @@
       "name": "Desa Wisata Nglinggo",
       "region": "kulon-progo",
       "category": "desa-wisata",
+      "published": true,
       "tags": [
         "kebun teh",
         "menoreh",
@@ -3389,6 +3440,7 @@
       "name": "Gua Kiskendo",
       "region": "kulon-progo",
       "category": "budaya",
+      "published": true,
       "tags": [
         "gua",
         "ramayana",
@@ -3447,6 +3499,7 @@
       "name": "Gua Maria Sendangsono",
       "region": "kulon-progo",
       "category": "budaya",
+      "published": true,
       "tags": [
         "ziarah",
         "katolik",
@@ -3529,6 +3582,7 @@
       "name": "Pantai Glagah",
       "region": "kulon-progo",
       "category": "pantai",
+      "published": true,
       "tags": [
         "laguna",
         "tetrapod",
@@ -3606,6 +3660,7 @@
       "name": "Pantai Trisik",
       "region": "kulon-progo",
       "category": "pantai",
+      "published": false,
       "tags": [
         "konservasi penyu",
         "burung pantai",
@@ -3656,6 +3711,7 @@
       "name": "Puncak Suroloyo",
       "region": "kulon-progo",
       "category": "alam",
+      "published": true,
       "tags": [
         "gardu pandang",
         "menoreh",
@@ -3718,6 +3774,7 @@
       "name": "Taman Sungai Mudal",
       "region": "kulon-progo",
       "category": "alam",
+      "published": true,
       "tags": [
         "mata air",
         "kolam alami",
@@ -3778,6 +3835,7 @@
       "name": "Waduk Sermo",
       "region": "kulon-progo",
       "category": "alam",
+      "published": true,
       "tags": [
         "waduk",
         "danau",
@@ -3864,6 +3922,7 @@
       "name": "Wisata Alam Kalibiru",
       "region": "kulon-progo",
       "category": "alam",
+      "published": true,
       "tags": [
         "hutan kemasyarakatan",
         "gardu pandang",

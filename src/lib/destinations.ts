@@ -28,6 +28,8 @@ export type Destination = {
   name: string;
   region: string;
   category: string;
+  /** false berarti datanya belum siap tayang; lihat catatan pada `destinations`. */
+  published: boolean;
   tags: string[];
   shortDescription: string;
   description: string[];
@@ -57,7 +59,18 @@ export type Destination = {
 export type Category = { id: string; label: string };
 export type Region = { id: string; label: string };
 
-export const destinations = data.destinations as Destination[];
+/**
+ * Seluruh isi berkas data, termasuk yang belum siap tayang. Hanya dipakai alat
+ * bantu dan pengujian; halaman situs memakai `destinations`.
+ */
+export const allDestinations = data.destinations as Destination[];
+
+/**
+ * Destinasi yang tampil di situs. Yang published-nya false disaring di sini,
+ * satu tempat saja, sehingga daftar, filter, pencarian, saran destinasi lain,
+ * angka di beranda, dan rute statis ikut terpengaruh tanpa perlu menyaring ulang.
+ */
+export const destinations = allDestinations.filter((d) => d.published);
 export const categories = data.categories as Category[];
 export const regions = data.regions as Region[];
 
@@ -154,6 +167,19 @@ export function getRelated(destination: Destination, limit = 3): RelatedResult {
   return { items, sameRegion };
 }
 
+/**
+ * Tautan peta untuk satu destinasi. Koordinat didahulukan karena formatnya
+ * resmi dan menunjuk titik yang persis; mapsUrl dipakai sebagai cadangan untuk
+ * destinasi yang koordinatnya belum diketahui.
+ */
+export function mapsHref(location: Destination["location"]): string {
+  const { lat, lng } = location;
+  if (lat !== null && lng !== null) {
+    return `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
+  }
+  return location.mapsUrl;
+}
+
 /** "Rp50.000" untuk harga tetap, "Rp20.000 - Rp25.000" untuk kisaran. */
 export function formatRate(rate: TicketRate): string {
   const rp = (n: number) => `Rp${n.toLocaleString("id-ID")}`;
@@ -161,14 +187,17 @@ export function formatRate(rate: TicketRate): string {
 }
 
 const VISITOR_LABEL: Record<RateVisitor, string> = {
-  local: "Wisatawan domestik",
-  foreign: "Wisatawan mancanegara",
+  local: "Domestik",
+  foreign: "Mancanegara",
 };
 
+// "hari kerja" dan bukan "Senin - Jumat": pembagian hari kerja dan akhir pekan
+// tidak selalu jatuh di batas yang sama. Vredeburg, misalnya, memakai tarif
+// akhir pekan mulai Jumat. Hari persisnya ditulis di info.notes tiap destinasi.
 const DAY_LABEL: Record<RateDay, string> = {
   all: "",
-  weekday: "Senin - Jumat",
-  weekend: "Akhir pekan & libur nasional",
+  weekday: "hari kerja",
+  weekend: "akhir pekan",
 };
 
 /** Label satu baris tarif; hari disembunyikan bila tarifnya berlaku setiap hari. */
