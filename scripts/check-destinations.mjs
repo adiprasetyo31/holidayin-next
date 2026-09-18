@@ -78,8 +78,12 @@ for (const d of data.destinations) {
   const loc = d.location ?? {};
   if ("regency" in loc) fail(at, "location.regency sudah digantikan oleh region");
   if (!loc.address) fail(at, "location.address kosong");
-  if (typeof loc.lat !== "number" || typeof loc.lng !== "number") {
-    fail(at, "location.lat/lng bukan angka");
+  // Keduanya boleh null bersamaan: koordinat belum diketahui, peta disembunyikan.
+  // Satu terisi satu null selalu galat, itu tanda data separuh jadi.
+  if (loc.lat === null && loc.lng === null) {
+    warn(at, "location.lat/lng masih null, peta tidak ditampilkan");
+  } else if (typeof loc.lat !== "number" || typeof loc.lng !== "number") {
+    fail(at, "location.lat/lng bukan angka (pakai null di keduanya bila tak ada)");
   } else {
     // Kotak kasar DIY, cukup untuk menangkap koordinat tertukar atau salah tanda.
     if (loc.lat < -8.3 || loc.lat > -7.4) fail(at, `lat di luar DIY: ${loc.lat}`);
@@ -113,7 +117,19 @@ for (const d of data.destinations) {
   // Gambar
   const images = d.images ?? {};
   const semua = [images.card, ...(images.gallery ?? [])].filter(Boolean);
-  if (!images.card?.src) fail(at, "images.card wajib ada");
+  // card boleh null: belum ada foto berlisensi yang layak, UI memakai panel polos.
+  // Yang tidak boleh adalah card kosong sementara galerinya terisi, itu tanda
+  // foto terbaiknya lupa diangkat jadi foto kartu.
+  if (!("card" in images)) fail(at, "images.card hilang (pakai null bila tak ada foto)");
+  if (images.card === null) {
+    if ((images.gallery ?? []).length > 0) {
+      fail(at, "images.card null tetapi galeri terisi; angkat satu foto jadi card");
+    } else {
+      warn(at, "belum ada foto berlisensi, kartu dan hero memakai panel polos");
+    }
+  } else if (!images.card?.src) {
+    fail(at, "images.card ada tetapi tanpa src");
+  }
   if (!Array.isArray(images.gallery)) fail(at, "images.gallery bukan array");
 
   for (const image of semua) {

@@ -2,13 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { DestinationCard } from "@/src/components/destination-card";
+import { FilterPills, type FilterOption } from "@/src/components/filter-pills";
 import { buttonClass } from "@/src/components/ui/button";
 import {
   categories,
+  categoryShortLabel,
+  countDestinations,
   destinasiHref,
   filterDestinations,
   firstParam,
   pageNumbers,
+  regionShortLabel,
   regions,
 } from "@/src/lib/destinations";
 
@@ -19,7 +23,7 @@ export const metadata: Metadata = {
 };
 
 const CHIP_BASE =
-  "inline-block rounded-pill border px-4 py-2 text-caption transition-colors";
+  "inline-flex h-10 items-center justify-center rounded-pill border px-4 text-caption transition-colors";
 const CHIP_ON = "border-accent bg-accent text-on-accent";
 const CHIP_OFF = "border-line bg-surface text-muted hover:text-text";
 
@@ -44,6 +48,38 @@ export default async function DestinasiPage({
   });
 
   const adaFilter = Boolean(query || wilayah || kategori);
+
+  // Angka pada tiap pil adalah hasil bila pil itu dipilih: kueri dan filter
+  // grup lain tetap berlaku, filter grup sendiri diganti.
+  const opsiWilayah: FilterOption[] = [
+    {
+      id: "",
+      label: "Semua",
+      count: countDestinations({ query, category: kategori }),
+      href: destinasiHref({ q: query, kategori }),
+    },
+    ...regions.map((region) => ({
+      id: region.id,
+      label: regionShortLabel(region.id),
+      count: countDestinations({ query, category: kategori, region: region.id }),
+      href: destinasiHref({ q: query, wilayah: region.id, kategori }),
+    })),
+  ];
+
+  const opsiKategori: FilterOption[] = [
+    {
+      id: "",
+      label: "Semua",
+      count: countDestinations({ query, region: wilayah }),
+      href: destinasiHref({ q: query, wilayah }),
+    },
+    ...categories.map((category) => ({
+      id: category.id,
+      label: categoryShortLabel(category.id),
+      count: countDestinations({ query, region: wilayah, category: category.id }),
+      href: destinasiHref({ q: query, wilayah, kategori: category.id }),
+    })),
+  ];
 
   return (
     <div className="mx-auto max-w-page px-gutter py-section">
@@ -75,69 +111,20 @@ export default async function DestinasiPage({
         </button>
       </form>
 
-      <nav aria-label="Saring wilayah" className="mt-6">
-        <ul className="flex flex-wrap gap-2">
-          <li>
-            <Link
-              href={destinasiHref({ q: query, kategori })}
-              aria-current={!wilayah ? "true" : undefined}
-              className={chipClass(!wilayah)}
-            >
-              Semua wilayah
-            </Link>
-          </li>
-          {regions.map((region) => {
-            const aktif = wilayah === region.id;
-            return (
-              <li key={region.id}>
-                <Link
-                  href={destinasiHref({
-                    q: query,
-                    wilayah: region.id,
-                    kategori,
-                  })}
-                  aria-current={aktif ? "true" : undefined}
-                  className={chipClass(aktif)}
-                >
-                  {region.label}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
-
-      <nav aria-label="Saring kategori" className="mt-3">
-        <ul className="flex flex-wrap gap-2">
-          <li>
-            <Link
-              href={destinasiHref({ q: query, wilayah })}
-              aria-current={!kategori ? "true" : undefined}
-              className={chipClass(!kategori)}
-            >
-              Semua kategori
-            </Link>
-          </li>
-          {categories.map((category) => {
-            const aktif = kategori === category.id;
-            return (
-              <li key={category.id}>
-                <Link
-                  href={destinasiHref({
-                    q: query,
-                    wilayah,
-                    kategori: category.id,
-                  })}
-                  aria-current={aktif ? "true" : undefined}
-                  className={chipClass(aktif)}
-                >
-                  {category.label}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
+      <div className="mt-8 space-y-6">
+        <FilterPills
+          legend="Wilayah"
+          legendId="filter-wilayah"
+          activeId={wilayah}
+          options={opsiWilayah}
+        />
+        <FilterPills
+          legend="Kategori"
+          legendId="filter-kategori"
+          activeId={kategori}
+          options={opsiKategori}
+        />
+      </div>
 
       <p className="mt-8 text-caption text-muted" aria-live="polite">
         {totalItems > 0
@@ -182,12 +169,12 @@ export default async function DestinasiPage({
                     hal: page - 1,
                   })}
                   rel="prev"
-                  className="rounded-pill border border-line bg-surface px-4 py-2 text-caption hover:border-accent hover:text-accent"
+                  className="inline-flex h-10 items-center rounded-pill border border-line bg-surface px-4 text-caption hover:border-accent hover:text-accent"
                 >
                   Sebelumnya
                 </Link>
               ) : (
-                <span className="cursor-not-allowed rounded-pill border border-line px-4 py-2 text-caption text-muted opacity-50">
+                <span className="inline-flex h-10 cursor-not-allowed items-center rounded-pill border border-line px-4 text-caption text-muted opacity-50">
                   Sebelumnya
                 </span>
               )}
@@ -224,12 +211,12 @@ export default async function DestinasiPage({
                     hal: page + 1,
                   })}
                   rel="next"
-                  className="rounded-pill border border-line bg-surface px-4 py-2 text-caption hover:border-accent hover:text-accent"
+                  className="inline-flex h-10 items-center rounded-pill border border-line bg-surface px-4 text-caption hover:border-accent hover:text-accent"
                 >
                   Berikutnya
                 </Link>
               ) : (
-                <span className="cursor-not-allowed rounded-pill border border-line px-4 py-2 text-caption text-muted opacity-50">
+                <span className="inline-flex h-10 cursor-not-allowed items-center rounded-pill border border-line px-4 text-caption text-muted opacity-50">
                   Berikutnya
                 </span>
               )}

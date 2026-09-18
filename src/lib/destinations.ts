@@ -33,8 +33,9 @@ export type Destination = {
   description: string[];
   location: {
     address: string;
-    lat: number;
-    lng: number;
+    /** null berpasangan dengan lng: koordinatnya belum diketahui, peta disembunyikan. */
+    lat: number | null;
+    lng: number | null;
     mapsUrl: string;
   };
   info: {
@@ -42,7 +43,11 @@ export type Destination = {
     ticket: { currency: string; rates: TicketRate[] };
     notes: string | null;
   };
-  images: { card: DestinationImage; gallery: DestinationImage[] };
+  /**
+   * card null berarti belum ada foto berlisensi yang layak untuk tempat ini.
+   * Kartu dan hero memakai panel polos, bukan foto seadanya.
+   */
+  images: { card: DestinationImage | null; gallery: DestinationImage[] };
   source: { listPage: string; detailPage: string } | null;
   needsVerification: string[];
   sources: string[];
@@ -80,12 +85,73 @@ export function regionLabel(id: string): string {
   return regions.find((r) => r.id === id)?.label ?? id;
 }
 
+/**
+ * Label pendek untuk pil filter. Nilai datanya tidak berubah; hanya tampilannya
+ * yang dipangkas supaya satu baris pil tetap ringkas di layar sempit.
+ * Label panjang tetap dipakai di kartu dan halaman detail.
+ */
+const REGION_SHORT: Record<string, string> = {
+  "kota-yogyakarta": "Kota Yogyakarta",
+  sleman: "Sleman",
+  bantul: "Bantul",
+  gunungkidul: "Gunungkidul",
+  "kulon-progo": "Kulon Progo",
+};
+
+const CATEGORY_SHORT: Record<string, string> = {
+  budaya: "Budaya",
+  pantai: "Pantai",
+  alam: "Alam",
+  "taman-hiburan": "Hiburan",
+  kuliner: "Kuliner",
+  "desa-wisata": "Desa Wisata",
+};
+
+export function regionShortLabel(id: string): string {
+  return REGION_SHORT[id] ?? regionLabel(id);
+}
+
+export function categoryShortLabel(id: string): string {
+  return CATEGORY_SHORT[id] ?? categoryLabel(id);
+}
+
 export function countByCategory(id: string): number {
   return destinations.filter((d) => d.category === id).length;
 }
 
 export function countByRegion(id: string): number {
   return destinations.filter((d) => d.region === id).length;
+}
+
+export type RelatedResult = {
+  items: Destination[];
+  /** true bila seluruh slot terisi dari wilayah yang sama; dipakai untuk judul. */
+  sameRegion: boolean;
+};
+
+/**
+ * Saran destinasi berikutnya, berlapis: sewilayah dulu, lalu ditambal sekategori
+ * dari wilayah lain, lalu sisanya. Dua wilayah hanya berisi dua destinasi, jadi
+ * tanpa lapisan tambal barisnya akan bolong di sebagian halaman.
+ */
+export function getRelated(destination: Destination, limit = 3): RelatedResult {
+  const lain = destinations.filter((d) => d.slug !== destination.slug);
+
+  const items = lain.filter((d) => d.region === destination.region).slice(0, limit);
+  const sameRegion = items.length >= limit;
+
+  for (const kandidat of [
+    lain.filter((d) => d.category === destination.category),
+    lain,
+  ]) {
+    if (items.length >= limit) break;
+    for (const d of kandidat) {
+      if (items.length >= limit) break;
+      if (!items.some((sudah) => sudah.slug === d.slug)) items.push(d);
+    }
+  }
+
+  return { items, sameRegion };
 }
 
 /** "Rp50.000" untuk harga tetap, "Rp20.000 - Rp25.000" untuk kisaran. */
@@ -147,12 +213,12 @@ export type FilterResult = {
   totalItems: number;
 };
 
-export function filterDestinations({
+/** Hasil saringan tanpa halaman. Dipakai filterDestinations dan countDestinations. */
+function selectDestinations({
   query = "",
   category = "",
   region = "",
-  page = 1,
-}: FilterInput): FilterResult {
+}: Omit<FilterInput, "page">): Destination[] {
   let items = destinations;
 
   if (region && regions.some((r) => r.id === region)) {
@@ -164,6 +230,17 @@ export function filterDestinations({
   if (query.trim()) {
     items = items.filter((d) => matchesQuery(d, query));
   }
+
+  return items;
+}
+
+/** Jumlah destinasi yang cocok, untuk angka di samping label pil filter. */
+export function countDestinations(input: Omit<FilterInput, "page">): number {
+  return selectDestinations(input).length;
+}
+
+export function filterDestinations({ page = 1, ...rest }: FilterInput): FilterResult {
+  const items = selectDestinations(rest);
 
   const totalItems = items.length;
   const totalPages = Math.max(1, Math.ceil(totalItems / PER_PAGE));
