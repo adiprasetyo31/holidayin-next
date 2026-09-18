@@ -1,0 +1,94 @@
+{
+  "_meta": {
+    "source": "legacy/event1.html, legacy/eventdet1.html",
+    "extractedAt": "2026-09-18",
+    "notes": [
+      "Legacy hanya memuat satu event, yaitu Jogja Fashion Week.",
+      "Event tidak termasuk fase 1: file ini disimpan sebagai referensi konten, tetapi rute /event belum dibangun.",
+      "Halaman detail event legacy menggunakan salinan markup halaman destinasi, sehingga informasi terkaitnya memuat jam buka dan harga tiket milik halaman Candi Prambanan.",
+      "Jadwal, harga tiket, dan koordinat dikosongkan (null) dan akan diisi manual.",
+      "info.ticket.rates berisi satu baris per tarif: visitor (local/foreign), day (all/weekday/weekend), serta min dan max. min sama dengan max berarti harga tetap, berbeda berarti kisaran harga. Array kosong berarti harga tidak tersedia dan blok harga disembunyikan."
+    ],
+    "imageRoot": "public/images/event",
+    "legacyImageRoot": "legacy/img/event",
+    "phase": 2
+  },
+  "categories": [
+    {
+      "id": "fashion",
+      "label": "Fashion"
+    },
+    {
+      "id": "budaya",
+      "label": "Budaya"
+    },
+    {
+      "id": "musik",
+      "label": "Musik"
+    },
+    {
+      "id": "pameran",
+      "label": "Pameran"
+    }
+  ],
+  "events": [
+    {
+      "slug": "jogja-fashion-week",
+      "name": "Jogja Fashion Week",
+      "category": "fashion",
+      "tags": [
+        "fashion",
+        "batik",
+        "pameran",
+        "peragaan busana"
+      ],
+      "shortDescription": "Pekan mode tahunan Yogyakarta yang menampilkan peragaan busana dan pameran karya perancang lokal.",
+      "description": [
+        "Jogja Fashion Week adalah pekan mode tahunan yang digelar di Yogyakarta sebagai panggung bagi perancang busana, pelaku industri kreatif, dan perajin wastra daerah. Rangkaian acaranya mencakup peragaan busana, pameran produk, serta sesi bincang yang mempertemukan perancang dengan pelaku usaha.",
+        "Batik dan tenun khas Yogyakarta menjadi bahan yang paling banyak diangkat, diolah menjadi busana siap pakai maupun karya adibusana. Selain menjadi ajang unjuk karya, acara ini juga terbuka untuk pengunjung umum yang ingin melihat pameran dan berbelanja langsung dari para perancang."
+      ],
+      "location": {
+        "venue": "Jogja Expo Center",
+        "address": null,
+        "regency": "Kabupaten Bantul",
+        "lat": null,
+        "lng": null,
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jogja+Expo+Center+Yogyakarta"
+      },
+      "schedule": {
+        "startDate": null,
+        "endDate": null,
+        "displayDate": null,
+        "openingHours": null
+      },
+      "info": {
+        "ticket": {
+          "currency": "IDR",
+          "rates": []
+        },
+        "organizer": null,
+        "notes": null
+      },
+      "images": {
+        "card": "/images/event/jfw.jpg",
+        "gallery": [
+          "/images/event/jfw3.jpg",
+          "/images/event/jfw.jpg",
+          "/images/event/jfw2.jpg"
+        ]
+      },
+      "source": {
+        "listPage": "event1.html",
+        "detailPage": "eventdet1.html"
+      },
+      "needsVerification": [
+        "location.address",
+        "location.regency",
+        "location.mapsUrl",
+        "schedule.startDate",
+        "schedule.endDate",
+        "schedule.displayDate"
+      ]
+    }
+  ]
+}

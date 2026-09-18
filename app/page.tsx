@@ -1,69 +1,146 @@
 import Image from "next/image";
+import Link from "next/link";
+
+import { DestinationCard } from "@/src/components/destination-card";
+import { ImageCredit } from "@/src/components/image-credit";
+import { buttonClass } from "@/src/components/ui/button";
+import {
+  categories,
+  countByCategory,
+  countByRegion,
+  destinasiHref,
+  destinations,
+  filledCategories,
+  filledRegions,
+  getDestination,
+} from "@/src/lib/destinations";
+
+const UNGGULAN = ["candi-prambanan", "pantai-indrayanti", "heha-sky-view"];
+const HERO = "candi-prambanan";
+
+const STATS = [
+  { value: destinations.length, label: "destinasi" },
+  { value: filledRegions.length, label: "wilayah" },
+  { value: filledCategories.length, label: "kategori" },
+];
 
 export default function Home() {
+  const unggulan = UNGGULAN.map(getDestination).filter(
+    (d): d is NonNullable<typeof d> => Boolean(d)
+  );
+
+  // Foto hero diambil dari data, bukan jalur yang ditulis tangan, supaya ikut
+  // berpindah saat berkas gambar diganti dan kreditnya tetap terbawa.
+  const hero = getDestination(HERO)?.images.card;
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <>
+      <section className="relative isolate overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          {hero && (
             <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
+              src={hero.src}
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          )}
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-gradient-to-b from-scrim/75 via-scrim/60 to-scrim/85"
+          />
         </div>
-      </main>
-    </div>
+
+        <div className="mx-auto max-w-page px-gutter py-section">
+          <p className="text-micro font-medium uppercase text-on-scrim-muted">
+            Panduan Wisata Yogyakarta
+          </p>
+          <h1 className="mt-4 max-w-2xl font-display text-h1 text-on-scrim">
+            Dari lereng Merapi sampai pantai selatan
+          </h1>
+          <p className="mt-5 max-w-xl text-body-lg text-on-scrim-muted">
+            {destinations.length} destinasi di {filledRegions.length} wilayah
+            Yogyakarta. Cari berdasarkan kategori atau wilayah, cek info
+            kunjungan, lalu buka lokasinya langsung di peta.
+          </p>
+          <Link href="/destinasi" className={buttonClass({ className: "mt-8" })}>
+            Jelajahi destinasi
+            <span aria-hidden>&rarr;</span>
+          </Link>
+
+          {/* Semua angka dihitung dari destinations.json, tidak ditulis tangan. */}
+          <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-caption text-on-scrim-muted">
+            {STATS.map((stat) => (
+              <li key={stat.label}>
+                <span className="font-medium text-on-scrim">{stat.value}</span>{" "}
+                {stat.label}
+              </li>
+            ))}
+          </ul>
+
+          <ImageCredit
+            credit={hero?.imageCredit ?? null}
+            tone="on-scrim"
+            className="mt-10"
+          />
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-page px-gutter py-block">
+        <h2 className="font-display text-h2">Telusuri per wilayah</h2>
+        <ul className="mt-6 flex flex-wrap gap-3">
+          {filledRegions.map((region) => (
+            <li key={region.id}>
+              <Link
+                href={destinasiHref({ wilayah: region.id })}
+                className="inline-flex items-baseline gap-2 rounded-pill border border-line bg-surface px-5 py-2.5 text-caption transition-colors hover:border-accent hover:text-accent"
+              >
+                {region.label}
+                <span className="text-micro tracking-normal text-muted">
+                  {countByRegion(region.id)}
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        <h2 className="mt-block font-display text-h2">Telusuri per kategori</h2>
+        <ul className="mt-6 flex flex-wrap gap-3">
+          {categories.map((category) => (
+            <li key={category.id}>
+              <Link
+                href={destinasiHref({ kategori: category.id })}
+                className="inline-flex items-baseline gap-2 rounded-pill border border-line bg-surface px-5 py-2.5 text-caption transition-colors hover:border-accent hover:text-accent"
+              >
+                {category.label}
+                <span className="text-micro tracking-normal text-muted">
+                  {countByCategory(category.id)}
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="mx-auto max-w-page px-gutter pb-8">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <h2 className="font-display text-h2">Destinasi pilihan</h2>
+          <Link
+            href="/destinasi"
+            className="text-caption font-medium text-accent hover:underline"
+          >
+            Lihat semua {destinations.length} destinasi
+          </Link>
+        </div>
+
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {unggulan.map((destination) => (
+            <DestinationCard key={destination.slug} destination={destination} />
+          ))}
+        </div>
+      </section>
+    </>
   );
 }

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pantai Indrayanti</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <header>
+    <a href="./landingPage.html" class="brand">HolidayIn</a>
+    <div class="menu-btn"></div>
+    <div class="navigation">
+      <div class="navigation-items">
+        <a href="">Home</a>
+        <a href="des1.html">Destination</a>
+        <a href="event1.html">Event</a>
+        <a href="">About</a>
+        <a href="./profile.html">Profile</a>
+      </div>
+    </div>
+  </header>
+
+  <div id="wrapper">
+    <div class="wrapper-row">
+      <div class="judul-tempat">
+        <h4>Pantai Indrayanti</h4>
+        <i id="left" class="fa-solid fa-angle-left"></i>
+        <div class="carousel">
+          <img src="img/tempat/indra1.jpg" alt="img" draggable="false">
+          <img src="img/tempat/indra2.png" alt="img" draggable="false">
+          <img src="img/tempat/indra5.webp" alt="img" draggable="false">
+          <img src="img/tempat/indra4.jpg" alt="img" draggable="false">
+          <img src="img/tempat/indra6.jpg" alt="img" draggable="false">
+          <img src="img/tempat/indra7.jpg" alt="img" draggable="false">
+        </div>
+        <i id="right" class="fa-solid fa-angle-right"></i>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="description">
+    <div class="desc-1">
+      <h3>Deskripsi Tempat</h3>
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum, adipisci mollitia? Perferendis nulla sint
+        iure,
+        deserunt dignissimos facilis eius molestiae error in, exercitationem tempore consequuntur natus reprehenderit
+        corrupti quos est.</p>
+    </div>
+    <div class="desc-2">
+      <h3>Informasi Terkait</h3>
+      <ul>
+        <li>Jam buka : 06.30 - 17.00</li>
+        <li>Harga Tiket Lokal : 40.000</li>
+        <li>Harga Tiket Touris : 348.000</li>
+        <li><span>Lokasi : </span><a href="https://www.google.com/maps/place/Pantai+Indrayanti/@-8.1507833,110.6099911,17z/data=!4m14!1m7!3m6!1s0x2e7bba2bebcb0c7f:0x854daae21d9d9724!2sPantai+Pulang+Sawal!8m2!3d-8.1506589!4d110.6126311!16s%2Fg%2F11_ygm9_9!3m5!1s0x2e7bba2bc08969f7:0x6df3fa2309bb186a!8m2!3d-8.1502919!4d110.6121188!16s%2Fg%2F12hkdw4v5?entry=ttu" target="_blank"><i class="fa-solid fa-location-dot"></i></a></li>
+      </ul>
+    </div>
+  </div>
+  </div>
+
+  <template class="reply-input-template">
+    <div class="reply-input container">
+      <img src="img/komen/hansohe.png" alt="" class="usr-img">
+      <textarea class="cmnt-input" placeholder="Add a comment..."></textarea>
+      <button class="bu-primary">SEND</button>
+    </div>
+  </template>
+
+  <template class="comment-template">
+    <div class="comment-wrp">
+      <div class="comment container">
+        <div class="c-controls">
+          <a class="delete"><img src="img/icon/icon-delete.svg" alt="" class="control-icon">Delete</a>
+          <a class="edit"><img src="img/icon/icon-edit.svg" alt="" class="control-icon">Edit</a>
+          <a class="reply"><img src="img/icon/icon-reply.svg" alt="" class="control-icon">Reply</a>
+        </div>
+        <div class="c-user">
+          <img src="img/komen/dicaprio.png" alt="" class="usr-img">
+          <p class="usr-name">Dicaprio</p>
+          <p class="cmnt-at">3 minggu yang lalu</p>
+        </div>
+        <p class="c-text">
+          <span class="reply-to"></span>
+          <span class="c-body"></span>
+        </p>
+      </div>
+      <div class="replies comments-wrp">
+      </div>
+    </div>
+  </template>
+
+  <main>
+    <div class="comment-section">
+      <h3>Ulasan</h3>
+      <div class="comments-wrp">
+
+      </div>
+      <div class="reply-input container">
+        <img src="img/komen/hansohe.png" alt="" class="usr-img">
+        <textarea class="cmnt-input" placeholder="Add a comment..."></textarea>
+        <button class="bu-primary">Kirim</button>
+      </div>
+    </div>
+
+    <div class="modal-wrp invisible">
+      <div class="modal container">
+        <h3>Delete comment</h3>
+        <p>Are you sure you want to delete this comment? This will remove the comment and cant be undone</p>
+        <button class="yes">YES,DELETE</button>
+        <button class="no">NO,CANCEL</button>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="section-p1">
+    <div class="col-1">
+      <h4>HolidayIn</h4>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem repudiandae nobis quisquam
+        sed, deleniti quidem minima obcaecati, excepturi minus at quae rerum debitis laudantium
+        eaque, quod unde corrupti est cum?</p>
+      <div class="follow">
+        <h4>Follow Us</h4>
+        <div class="icon">
+          <i class="fab fa-facebook-f"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-youtube"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-2">
+      <h4>About</h4>
+      <a href="#">About Us</a>
+      <a href="#">Terms and Service</a>
+      <a href="#">Gov Notice</a>
+      <a href="#">About Us</a>
+    </div>
+
+    <div class="col-3">
+      <h4>About</h4>
+      <a href="#">About Us</a>
+      <a href="#">Terms and Service</a>
+      <a href="#">Gov Notice</a>
+      <a href="#">About Us</a>
+    </div>
+
+    <div class="col install">
+      <h4>Install App</h4>
+      <p>From App Store or Google Play</p>
+      <div class="row">
+        <img src="./src/app.jpg" alt="">
+        <img src="./src/play.jpg" alt="">
+      </div>
+    </div>
+
+    <div class="copyright">
+      <p>Copyrights 2023 © HolidayIn. All rights reserved.</p>
+    </div>
+  </footer>
+
+
+  <script src="./Js/index.js"></script>
+</body>
+
+</html>

@@ -1,26 +1,185 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ==========================================================================
+   Token warna
+   Palet Yogyakarta: batik sogan, batu andesit Merapi, emas kraton.
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+   Mode gelap dipasang lewat dua jalur:
+   - preferensi sistem, kecuali disetel paksa ke terang
+   - atribut [data-theme] pada elemen mana pun, agar satu halaman bisa
+     menampilkan kedua mode sekaligus (dipakai /styleguide)
+   ========================================================================== */
+
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+
+  --background: #f7f3ec;
+  --surface: #efe7da;
+  --surface-raised: #e6dbc9;
+  --text: #2b211a;
+  --muted: #7a6a5c;
+  --accent: #9c5b2e;
+  --accent-hover: #824b26;
+  --on-accent: #f7f3ec;
+  --highlight: #b8893a;
+  --stone: #5e6660;
+  --border: rgb(43 33 26 / 0.14);
+  --border-strong: rgb(43 33 26 / 0.28);
+  --shadow-color: rgb(43 33 26 / 0.1);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --background: #1a1612;
+    --surface: #241e18;
+    --surface-raised: #2f2720;
+    --text: #efe6d9;
+    --muted: #a2937f;
+    --accent: #c77f4a;
+    --accent-hover: #d99a6a;
+    --on-accent: #1a1612;
+    --highlight: #d6a85a;
+    --stone: #8a938c;
+    --border: rgb(239 230 217 / 0.16);
+    --border-strong: rgb(239 230 217 / 0.32);
+    --shadow-color: rgb(0 0 0 / 0.45);
   }
 }
 
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --background: #1a1612;
+  --surface: #241e18;
+  --surface-raised: #2f2720;
+  --text: #efe6d9;
+  --muted: #a2937f;
+  --accent: #c77f4a;
+  --accent-hover: #d99a6a;
+  --on-accent: #1a1612;
+  --highlight: #d6a85a;
+  --stone: #8a938c;
+  --border: rgb(239 230 217 / 0.16);
+  --border-strong: rgb(239 230 217 / 0.32);
+  --shadow-color: rgb(0 0 0 / 0.45);
+}
+
+/* Token yang nilainya ikut berubah per mode: dipetakan inline agar utilitas
+   Tailwind memakai var() apa adanya dan tetap benar di dalam subtree
+   [data-theme]. */
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-on-accent: var(--on-accent);
+  --color-highlight: var(--highlight);
+  --color-stone: var(--stone);
+  --color-line: var(--border);
+  --color-line-strong: var(--border-strong);
+
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-fraunces);
+}
+
+/* ==========================================================================
+   Token tipografi, spasi, radius, bayangan
+   Nilainya tetap di kedua mode, jadi ditulis sebagai token statis.
+   ========================================================================== */
+
+@theme {
+  /* Warna tetap untuk teks di atas foto. Tidak ikut berubah per mode:
+     tirai gelap di atas gambar tetap gelap, jadi teksnya tetap terang. */
+  --color-scrim: #2b211a;
+  --color-on-scrim: #f7f3ec;
+  --color-on-scrim-muted: rgb(239 231 218 / 0.85);
+
+  /* Skala tipe. Ukuran display dan h1-h2 memakai clamp() supaya tidak perlu
+     override per breakpoint di komponen. */
+  --text-display: clamp(2.5rem, 1.85rem + 3.2vw, 4rem);
+  --text-display--line-height: 1.04;
+  --text-display--letter-spacing: -0.022em;
+  --text-display--font-weight: 600;
+
+  --text-h1: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --text-h1--line-height: 1.1;
+  --text-h1--letter-spacing: -0.018em;
+  --text-h1--font-weight: 600;
+
+  --text-h2: clamp(1.5rem, 1.32rem + 0.9vw, 2rem);
+  --text-h2--line-height: 1.18;
+  --text-h2--letter-spacing: -0.012em;
+  --text-h2--font-weight: 600;
+
+  --text-h3: 1.375rem;
+  --text-h3--line-height: 1.3;
+  --text-h3--letter-spacing: -0.008em;
+  --text-h3--font-weight: 600;
+
+  --text-h4: 1.125rem;
+  --text-h4--line-height: 1.4;
+  --text-h4--font-weight: 600;
+
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.7;
+
+  --text-body: 1rem;
+  --text-body--line-height: 1.65;
+
+  --text-caption: 0.875rem;
+  --text-caption--line-height: 1.5;
+
+  --text-micro: 0.75rem;
+  --text-micro--line-height: 1.4;
+  --text-micro--letter-spacing: 0.08em;
+
+  /* Spasi semantik. Basis --spacing bawaan Tailwind (0.25rem) dibiarkan,
+     jadi p-4, gap-6 dan seterusnya tetap berlaku. */
+  --spacing-gutter: clamp(1rem, 0.6rem + 1.6vw, 1.5rem);
+  --spacing-block: clamp(1.5rem, 1.1rem + 1.8vw, 2.5rem);
+  --spacing-section: clamp(3rem, 2rem + 5vw, 6rem);
+
+  /* Lebar konten. Menggantikan max-w-6xl yang sebelumnya diulang. */
+  --container-page: 72rem;
+  --container-prose: 44rem;
+
+  /* Radius semantik di atas skala bawaan. */
+  --radius-field: 0.75rem;
+  --radius-card: 1rem;
+  --radius-pill: 9999px;
+
+  --shadow-card: 0 1px 2px var(--shadow-color);
+  --shadow-raised: 0 12px 32px -12px var(--shadow-color);
+}
+
+/* ==========================================================================
+   Dasar
+   ========================================================================== */
+
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  font-optical-sizing: auto;
+}
+
+/* Fokus yang terlihat di kedua tema, untuk navigasi keyboard. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
