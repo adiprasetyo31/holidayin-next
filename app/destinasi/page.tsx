@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { ActiveFilters, type ActiveFilter } from "@/src/components/active-filters";
 import { DestinationCard } from "@/src/components/destination-card";
 import { FilterPills, type FilterOption } from "@/src/components/filter-pills";
-import { buttonClass } from "@/src/components/ui/button";
+import { FilterSheet } from "@/src/components/filter-sheet";
+import { SearchField } from "@/src/components/search-field";
 import {
   categories,
   categoryShortLabel,
@@ -81,6 +83,54 @@ export default async function DestinasiPage({
     })),
   ];
 
+  // Jumlah hasil untuk setiap pasangan wilayah dan kategori, dihitung di server
+  // dan dikirim ke lembar filter. Dengan begitu angka pada pil dan pada tombol
+  // "Tampilkan" bisa berubah mengikuti pilihan tanpa memuat ulang halaman.
+  // Ukurannya kecil: tujuh wilayah kali tujuh kategori.
+  const counts: Record<string, number> = {};
+  for (const r of ["", ...regions.map((x) => x.id)]) {
+    for (const c of ["", ...categories.map((x) => x.id)]) {
+      counts[`${r}|${c}`] = countDestinations({
+        query,
+        region: r,
+        category: c,
+      });
+    }
+  }
+
+  // Chip filter aktif. Kueri pencarian ikut masuk supaya bisa dilepas satuan,
+  // sementara lencana pada tombol Filter hanya menghitung wilayah dan kategori
+  // karena itu yang diatur di dalam lembar.
+  const filterAktif: ActiveFilter[] = [
+    ...(query
+      ? [
+          {
+            label: `"${query}"`,
+            removeHref: destinasiHref({ wilayah, kategori }),
+            removeLabel: `Hapus pencarian ${query}`,
+          },
+        ]
+      : []),
+    ...(wilayah
+      ? [
+          {
+            label: regionShortLabel(wilayah),
+            removeHref: destinasiHref({ q: query, kategori }),
+            removeLabel: `Hapus filter wilayah ${regionShortLabel(wilayah)}`,
+          },
+        ]
+      : []),
+    ...(kategori
+      ? [
+          {
+            label: categoryShortLabel(kategori),
+            removeHref: destinasiHref({ q: query, wilayah }),
+            removeLabel: `Hapus filter kategori ${categoryShortLabel(kategori)}`,
+          },
+        ]
+      : []),
+  ];
+
   return (
     <div className="mx-auto max-w-page px-gutter py-section">
       <header>
@@ -91,27 +141,50 @@ export default async function DestinasiPage({
         </p>
       </header>
 
-      {/* Form GET biasa: pencarian tetap jalan tanpa JavaScript. */}
-      <form action="/destinasi" className="mt-8 flex flex-wrap gap-3">
+      {/* Hasil menyaring sendiri sambil mengetik, jadi tidak ada tombol Cari.
+          Form GET-nya tetap ada supaya tanpa JavaScript menekan Enter masih
+          mengirim kueri seperti biasa. */}
+      <form action="/destinasi" className="mt-8 flex gap-3">
         {wilayah && <input type="hidden" name="wilayah" value={wilayah} />}
         {kategori && <input type="hidden" name="kategori" value={kategori} />}
-        <label htmlFor="q" className="sr-only">
-          Cari destinasi
-        </label>
-        <input
-          id="q"
-          name="q"
-          type="search"
-          defaultValue={query}
-          placeholder="Cari destinasi, wilayah, atau kata kunci"
-          className="min-w-0 flex-1 rounded-pill border border-line bg-surface px-5 py-3 text-caption text-text placeholder:text-muted"
-        />
-        <button type="submit" className={buttonClass({ variant: "primary" })}>
-          Cari
-        </button>
+
+        <SearchField defaultValue={query} />
+
+        {/* Lembar filter menggantikan deretan pil di bawah md. */}
+        <div className="md:hidden">
+          <FilterSheet
+            query={query}
+            activeRegion={wilayah}
+            activeCategory={kategori}
+            counts={counts}
+            regions={[
+              { id: "", label: "Semua" },
+              ...regions.map((r) => ({
+                id: r.id,
+                label: regionShortLabel(r.id),
+              })),
+            ]}
+            categories={[
+              { id: "", label: "Semua" },
+              ...categories.map((c) => ({
+                id: c.id,
+                label: categoryShortLabel(c.id),
+              })),
+            ]}
+          />
+        </div>
       </form>
 
-      <div className="mt-8 space-y-6">
+      {/* Chip hanya di bawah md. Mulai md filter aktif sudah terbaca dari pil
+          yang tersorot, jadi menampilkan keduanya cuma mengulang informasi. */}
+      {filterAktif.length > 0 && (
+        <div className="mt-4 md:hidden">
+          <ActiveFilters filters={filterAktif} />
+        </div>
+      )}
+
+      {/* Mulai md filter tampil apa adanya sebagai deretan pil yang membungkus. */}
+      <div className="mt-8 hidden space-y-6 md:block">
         <FilterPills
           legend="Wilayah"
           legendId="filter-wilayah"
@@ -125,7 +198,6 @@ export default async function DestinasiPage({
           options={opsiKategori}
         />
       </div>
-
       <p className="mt-8 text-caption text-muted" aria-live="polite">
         {totalItems > 0
           ? `Menampilkan ${items.length} dari ${totalItems} destinasi`

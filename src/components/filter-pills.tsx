@@ -19,10 +19,10 @@ type FilterPillsProps = {
 };
 
 /* Tinggi dikunci 40px dan teks tidak boleh membungkus: itu yang membuat pil
-   gepeng dan saling tindih saat ruang mendatar habis. Di layar sempit deretan
-   pil menjadi satu baris yang digeser; mulai md pil kembali membungkus.
-   relative menahan span sr-only di dalam pil; tanpa itu posisi absolutnya
-   mengacu ke pembungkus di luar area gulir dan halaman melebar ke samping. */
+   gepeng dan saling tindih saat ruang mendatar habis. Deretan pil membungkus
+   ke baris berikutnya, tidak pernah digeser ke samping, jadi tidak ada pilihan
+   yang terpotong. Di bawah md filter tampil sebagai lembar bawah, bukan pil.
+   relative menahan span sr-only di dalam pil. */
 const PILL_BASE =
   "relative inline-flex h-10 shrink-0 items-center gap-1.5 whitespace-nowrap " +
   "rounded-pill border px-4 text-caption transition-colors";
@@ -43,13 +43,8 @@ export function FilterPills({
         {legend}
       </h2>
 
-      <div className="relative mt-2">
-        <ul
-          className={
-            "flex snap-x snap-mandatory gap-2 overflow-x-auto scrollbar-none " +
-            "pr-8 pb-1 md:flex-wrap md:snap-none md:overflow-x-visible md:pr-0 md:pb-0"
-          }
-        >
+      <div className="mt-2">
+        <ul className="flex flex-wrap gap-2">
           {options.map((option) => {
             const aktif = option.id === activeId;
             // Pilihan tanpa hasil jadi jalan buntu, jadi tautannya dilepas.
@@ -67,7 +62,7 @@ export function FilterPills({
             );
 
             return (
-              <li key={option.id || "semua"} className="shrink-0 snap-start">
+              <li key={option.id || "semua"}>
                 {mati ? (
                   <span className={`${PILL_BASE} ${PILL_EMPTY}`}>{isi}</span>
                 ) : (
@@ -83,16 +78,6 @@ export function FilterPills({
             );
           })}
         </ul>
-
-        {/* Isyarat bahwa baris masih bisa digeser. Hanya di layar sempit,
-            karena mulai md pil sudah membungkus. */}
-        <div
-          aria-hidden
-          className={
-            "pointer-events-none absolute inset-y-0 right-0 w-10 " +
-            "bg-gradient-to-l from-background to-transparent md:hidden"
-          }
-        />
       </div>
     </nav>
   );
