@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login-registration</title>
+    <!--css style-->
+    <link rel="stylesheet" href="./css/login.css">
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!--BoxIcons-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav class="nav">
+            <div class="nav-logo">
+                <p><a href="./landingPage.html">HolidayIn .</a></p>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="" class="link">Home</a></li>
+                    <li><a href="./des1.html" class="link">Destination</a></li>
+                    <li><a href="./event1.html" class="link">Event</a></li>
+                    <li><a href="" class="link">About</a></li>
+                </ul>
+            </div>
+            <div class="nav-button">
+                <button class="btn white-btn" id="loginbtn" onclick="login()">Sign In</button>
+                <button class="btn" id="registerbtn" onclick="register()">Register</button>
+            </div>
+            <div class="nav-menu-btn">
+                <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+            </div>
+        </nav>
+        <!---------------------------------------- Form Box --------------------------------------------->
+        <div class="form-box">
+
+            <!------------ Login Form -------------->
+            <form action="./php/login.php" method="post">
+                <div class="login-container" id="login">
+                    <div class="top">
+                        <span>Don't have an account? <a href="#" onclick="register()">Register</a></span>
+                        <header>Login</header>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="Username or Email" name="email">
+                        <i class="bx bx-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" class="input-field" placeholder="Password" name="password">
+                        <i class="bx bx-lock-alt"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="submit" class="submit" value="Sign In">
+                    </div>
+                    <div class="two-col">
+                        <div class="one">
+                            <input type="checkbox" id="login-check">
+                            <label for="login-check"> Remember me </label>
+                        </div>
+                        <div class="two">
+                            <label><a href="#"> Forgot Password? </a></label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <!------------ Registrasi Form -------------->
+            <form action="php/Registrasi.php" method="post">
+                <div class="register-container" id="register">
+                    <div class="top">
+                        <span>Have an account? <a href="#" onclick="login()">Login</a></span>
+                        <header>Register</header>
+                    </div>
+                    <div class="two-forms">
+                        <div class="input-box">
+                            <input type="text" class="input-field" placeholder="Firstname" name="first_name">
+                            <i class="bx bx-user"></i>
+                        </div>
+                        <div class="input-box">
+                            <input type="text" class="input-field" placeholder="Lastname" name="last_name">
+                            <i class="bx bx-user"></i>
+                        </div>
+                    </div>
+                    <!-- <div class="input-box">
+                    <input type="text" class="input-field" placeholder="Alamat">
+                    <i class="bx bx-home"></i>
+                </div> -->
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="Email" name="email">
+                        <i class="bx bx-envelope"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" class="input-field" placeholder="Password" name="password">
+                        <i class="bx bx-lock-alt"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="submit" class="submit" value="Register">
+                    </div>
+                    <div class="two-col">
+                        <div class="one">
+                            <input type="checkbox" id="register-check">
+                            <label for="register-check"> Remember me </label>
+                        </div>
+                        <div class="two">
+                            <label><a href="#">Terms & conditions </a></label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- <script>
+        function myMenuFunction(){
+            var i = document.getElementById("navMenu")
+
+            if(i.className === "nav-menu"){
+                i.className += " responsive";
+        } else {
+            i.className = "nav-menu";
+        }
+    }
+    </script>
+    <script>
+        var a = document.getElementById("loginbtn");
+        var b = document.getElementById("registerbtn");
+        var x = document.getElementById("login");
+        var y = document.getElementById("register");
+
+        function login() {
+            x.style.left = "4px";
+            y.style.right = "-520px";
+            a.className += " white-btn";
+            b.className = "btn";
+            x.style.opacity = 1
+            y.style.opacity = 0;
+        }
+
+        function register() {
+            x.style.left = "-510px";
+            y.style.right = "5px";
+            a.className = "btn";
+            b.className += " white-btn";
+            x.style.opacity = 0;
+            y.style.opacity = 1;
+        }
+    </script> -->
+    <script src="./Js/login.js"></script>
+</body>
+
+</html>

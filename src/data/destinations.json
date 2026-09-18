@@ -1,0 +1,793 @@
+{
+  "_meta": {
+    "source": "legacy/des1.html, legacy/des2.html, legacy/det*.html",
+    "extractedAt": "2026-09-18",
+    "notes": [
+      "Nama, alamat, dan daftar gambar diambil dari kode legacy.",
+      "Seluruh 12 halaman detail legacy memuat teks Lorem ipsum yang identik, sehingga shortDescription dan description ditulis ulang untuk proyek ini.",
+      "Jam buka, harga tiket, dan koordinat berasal dari riset web pada lastVerified; sumbernya tercantum pada field sources tiap destinasi.",
+      "info.ticket.rates berisi satu baris per tarif: visitor (local/foreign), day (all/weekday/weekend), serta min dan max. min sama dengan max berarti harga tetap, berbeda berarti kisaran harga. Array kosong berarti harga tidak tersedia dan blok harga disembunyikan.",
+      "Nilai yang tidak ditemukan pada sumber tepercaya dibiarkan null; UI menyembunyikan informasi praktis yang bernilai null.",
+      "needsVerification memuat field yang nilainya terisi tetapi belum tepercaya (sumber lama atau sumber saling bertentangan)."
+    ],
+    "imageRoot": "public/images/destinasi",
+    "legacyImageRoot": "legacy/img/tempat"
+  },
+  "categories": [
+    {
+      "id": "budaya",
+      "label": "Budaya & Sejarah"
+    },
+    {
+      "id": "pantai",
+      "label": "Pantai"
+    },
+    {
+      "id": "alam",
+      "label": "Alam & Perbukitan"
+    },
+    {
+      "id": "taman-hiburan",
+      "label": "Taman Hiburan"
+    },
+    {
+      "id": "kuliner",
+      "label": "Kuliner & Panorama"
+    }
+  ],
+  "destinations": [
+    {
+      "slug": "candi-prambanan",
+      "name": "Candi Prambanan",
+      "category": "budaya",
+      "tags": [
+        "candi",
+        "situs warisan dunia",
+        "sejarah",
+        "sendratari"
+      ],
+      "shortDescription": "Kompleks candi Hindu terbesar di Indonesia dengan tiga candi utama yang menjulang lebih dari empat puluh meter.",
+      "description": [
+        "Candi Prambanan adalah kompleks candi Hindu terbesar di Indonesia, dibangun pada abad ke-9 pada masa Kerajaan Mataram Kuno. Tiga candi utamanya dipersembahkan untuk Trimurti, yaitu Siwa, Wisnu, dan Brahma, dengan Candi Siwa di tengah sebagai bangunan tertinggi. Dinding pagar langkan candi dipahat relief yang mengisahkan Ramayana, dan dapat diikuti sambil berjalan mengelilingi candi searah jarum jam.",
+        "Masyarakat setempat mengaitkan kompleks ini dengan legenda Roro Jonggrang, sang putri yang menurut cerita dikutuk menjadi arca di dalam Candi Siwa. Kompleks Prambanan ditetapkan sebagai Situs Warisan Dunia UNESCO dan pada musim tertentu menjadi panggung pergelaran Sendratari Ramayana dengan latar candi yang disorot lampu pada malam hari."
+      ],
+      "location": {
+        "address": "Desa Bokoharjo, Kec. Prambanan, Kabupaten Sleman, Daerah Istimewa Yogyakarta",
+        "regency": "Kabupaten Sleman",
+        "lat": -7.75222,
+        "lng": 110.49167,
+        "mapsUrl": "https://maps.app.goo.gl/guWobKxZwPXQ1GtF6"
+      },
+      "info": {
+        "openingHours": "07.00 - 17.30",
+        "ticket": {
+          "currency": "IDR",
+          "rates": [
+            {
+              "visitor": "local",
+              "day": "weekday",
+              "min": 50000,
+              "max": 50000
+            },
+            {
+              "visitor": "local",
+              "day": "weekend",
+              "min": 65000,
+              "max": 65000
+            },
+            {
+              "visitor": "foreign",
+              "day": "all",
+              "min": 400000,
+              "max": 400000
+            }
+          ]
+        },
+        "notes": "Layanan loket tiket pukul 06.30 - 17.00. Zona utama candi tutup setiap Senin untuk perawatan."
+      },
+      "images": {
+        "card": "/images/destinasi/prambanan5.jpg",
+        "gallery": [
+          "/images/destinasi/prambanan1.jpeg",
+          "/images/destinasi/prambanan2.jpg",
+          "/images/destinasi/prambanan3.jpg",
+          "/images/destinasi/prambanan4.webp"
+        ]
+      },
+      "source": {
+        "listPage": "des1.html",
+        "detailPage": "detpramb.html"
+      },
+      "needsVerification": [
+        "info.openingHours"
+      ],
+      "sources": [
+        "https://injourney.id/media-publication/article/harga-tiket-masuk-candi-prambanan-2026-update-terbaru-dan-cara-belinya",
+        "https://visitingjogja.jogjaprov.go.id/36404/jam-operasional-twc-prambanan/",
+        "https://en.wikipedia.org/wiki/Prambanan"
+      ],
+      "lastVerified": "2026-09-18"
+    },
+    {
+      "slug": "heha-sky-view",
+      "name": "Heha Sky View",
+      "category": "kuliner",
+      "tags": [
+        "panorama",
+        "restoran",
+        "spot foto",
+        "sunset"
+      ],
+      "shortDescription": "Restoran dan taman rekreasi di perbukitan Patuk dengan panorama lampu Kota Yogyakarta pada malam hari.",
+      "description": [
+        "Heha Sky View berdiri di perbukitan Patuk, Gunung Kidul, pada ketinggian yang menghadap langsung ke arah Kota Yogyakarta. Kawasan ini menggabungkan area kuliner, deretan tenant makanan, dan sejumlah spot foto berupa dek kaca serta anjungan yang menjorok ke arah lembah.",
+        "Waktu paling ramai adalah menjelang matahari terbenam hingga malam, ketika lampu kota mulai menyala dan membentuk hamparan cahaya di bawah perbukitan. Karena berada di jalur Jalan Dlingo-Patuk yang berkelok, perjalanan ke lokasi sebaiknya dilakukan sebelum gelap bagi yang belum terbiasa."
+      ],
+      "location": {
+        "address": "Jl. Dlingo-Patuk No.2, Patuk, Bukit, Kec. Patuk, Kabupaten Gunung Kidul, Daerah Istimewa Yogyakarta 55862",
+        "regency": "Kabupaten Gunung Kidul",
+        "lat": -7.8491296,
+        "lng": 110.4782259,
+        "mapsUrl": "https://www.google.com/maps/place/HeHa+Sky+View/@-7.8496144,110.478324,15z/data=!4m6!3m5!1s0x2e7a512d80f3246d:0xf671a280cf1b6f55!8m2!3d-7.8496144!4d110.478324!16s%2Fg%2F11hyt6k0zw?entry=ttu"
+      },
+      "info": {
+        "openingHours": "10.00 - 21.00 (Sen-Jum), 08.00 - 21.00 (Sab-Min & libur nasional)",
+        "ticket": {
+          "currency": "IDR",
+          "rates": [
+            {
+              "visitor": "local",
+              "day": "all",
+              "min": 20000,
+              "max": 20000
+            }
+          ]
+        },
+        "notes": "Tiket masuk belum termasuk spot foto berbayar dan parkir. Tarif dapat naik pada periode libur panjang."
+      },
+      "images": {
+        "card": "/images/destinasi/hehasky1.jpg",
+        "gallery": [
+          "/images/destinasi/hehasky2.webp",
+          "/images/destinasi/hehasky3.png",
+          "/images/destinasi/hehasky4.jpg",
+          "/images/destinasi/hehasky5.jpg",
+          "/images/destinasi/hehasky6.jpg"
+        ]
+      },
+      "source": {
+        "listPage": "des1.html",
+        "detailPage": "dethehasky.html"
+      },
+      "needsVerification": [
+        "info.openingHours",
+        "info.ticket"
+      ],
+      "sources": [
+        "https://www.detik.com/jogja/plesir/d-7038859/harga-tiket-heha-sky-view-suguhkan-view-jogja-dari-atas-perbukitan",
+        "https://nominatim.openstreetmap.org/search?q=HeHa+Sky+View+Patuk+Gunungkidul"
+      ],
+      "lastVerified": "2026-09-18"
+    },
+    {
+      "slug": "hutan-pinus-mangunan",
+      "name": "Hutan Pinus Mangunan",
+      "category": "alam",
+      "tags": [
+        "hutan",
+        "udara sejuk",
+        "spot foto",
+        "panggung kayu"
+      ],
+      "shortDescription": "Hutan pinus rapat di perbukitan Dlingo dengan udara sejuk dan berkas cahaya yang menembus sela pepohonan.",
+      "description": [
+        "Hutan Pinus Mangunan merupakan kawasan hutan tanaman pinus di perbukitan Dlingo, Bantul, yang dibuka untuk wisata. Barisan pohon yang tinggi dan rapat membuat suhu udara terasa lebih sejuk dibanding wilayah kota, sementara cahaya matahari yang menembus sela-sela pohon menjadi daya tarik utama bagi pengunjung yang datang untuk berfoto.",
+        "Di dalam kawasan terdapat panggung kayu, gardu pandang, dan jalur setapak yang bisa disusuri dengan santai. Kabut tipis kerap muncul pada pagi hari, terutama pada musim hujan, dan menjadi waktu berkunjung yang paling digemari."
+      ],
+      "location": {
+        "address": "Jl. Hutan Pinus Nganjir, Mangunan, Kec. Dlingo, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55783",
+        "regency": "Kabupaten Bantul",
+        "lat": -7.925816,
+        "lng": 110.4308207,
+        "mapsUrl": "https://www.google.com/maps/place/Hutan+Pinus+Mangunan/@-7.9258158,110.4317585,15z/data=!4m2!3m1!1s0x0:0x9fb567811ef62e4e?sa=X&ved=2ahUKEwigjNbQsIGDAxVnyDgGHQ3sDWwQ_BJ6BAgPEAA"
+      },
+      "info": {
+        "openingHours": "06.00 - 18.00",
+        "ticket": {
+          "currency": "IDR",
+          "rates": [
+            {
+              "visitor": "local",
+              "day": "all",
+              "min": 5000,
+              "max": 5000
+            }
+          ]
+        },
+        "notes": "Parkir dikenakan terpisah: Rp3.000 (motor) dan Rp5.000 (mobil). Sebagian sumber menyebut kawasan ini bebas tiket masuk, sehingga tarif perlu dikonfirmasi ke pengelola."
+      },
+      "images": {
+        "card": "/images/destinasi/pinusmangun6.webp",
+        "gallery": [
+          "/images/destinasi/pinusmangun2.jpg",
+          "/images/destinasi/pinusmangun3.jpg",
+          "/images/destinasi/pinusmangun4.png",
+          "/images/destinasi/pinusmangun5.jpg",
+          "/images/destinasi/pinusmangun6.webp"
+        ]
+      },
+      "source": {
+        "listPage": "des1.html",
+        "detailPage": "detpinusmangun.html"
+      },
+      "needsVerification": [
+        "info.openingHours",
+        "info.ticket"
+      ],
+      "sources": [
+        "https://www.detik.com/jogja/plesir/d-7065706/hutan-pinus-mangunan-daya-tarik-fasilitas-dan-harga-tiket-masuk",
+        "https://nominatim.openstreetmap.org/search?q=Hutan+Pinus+Mangunan+Dlingo+Bantul"
+      ],
+      "lastVerified": "2026-09-18"
+    },
+    {
+      "slug": "heha-ocean-view",
+      "name": "Heha Ocean View",
+      "category": "kuliner",
+      "tags": [
+        "tebing",
+        "laut selatan",
+        "restoran",
+        "sunset"
+      ],
+      "shortDescription": "Kawasan kuliner di atas tebing Panggang yang menghadap langsung ke hamparan laut selatan.",
+      "description": [
+        "Heha Ocean View menempati tebing karang di Girikarto, Panggang, dengan orientasi bangunan yang seluruhnya menghadap ke laut selatan. Area makan, dek pandang, dan jembatan kaca disusun mengikuti garis tebing sehingga deburan ombak terlihat dari hampir seluruh sudut kawasan.",
+        "Suasana yang paling banyak dicari adalah saat sore menjelang matahari terbenam, ketika garis cakrawala terlihat tanpa halangan. Angin laut di tepi tebing cukup kencang, sehingga pengunjung disarankan membawa pakaian luar tambahan."
+      ],
+      "location": {
+        "address": "Bolang, Girikarto, Kec. Panggang, Kabupaten Gunung Kidul, Daerah Istimewa Yogyakarta 55872",
+        "regency": "Kabupaten Gunung Kidul",
+        "lat": -8.1044328,
+        "lng": 110.4604843,
+        "mapsUrl": "https://www.google.com/maps/place/HeHa+Ocean+View/@-8.1060664,110.4615101,15z/data=!4m2!3m1!1s0x0:0x997d9f484bcd7d09?sa=X&ved=2ahUKEwit39KWs4GDAxV1yzgGHbtqAdUQ_BJ6BAgPEAA&hl=id"
+      },
+      "info": {
+        "openingHours": "09.00 - 21.00 (Sen-Jum), 08.00 - 21.00 (Sab-Min & libur nasional)",
+        "ticket": {
+          "currency": "IDR",
+          "rates": [
+            {
+              "visitor": "local",
+              "day": "all",
+              "min": 20000,
+              "max": 25000
+            }
+          ]
+        },
+        "notes": "Tarif masuk berupa kisaran dan belum termasuk spot foto berbayar di dalam kawasan."
+      },
+      "images": {
+        "card": "/images/destinasi/hehaocean5.jpg",
+        "gallery": [
+          "/images/destinasi/hehaocean2.jpg",
+          "/images/destinasi/hehaocean4.png",
+          "/images/destinasi/hehaocean1.jpg",
+          "/images/destinasi/hehaocean6.jpg",
+          "/images/destinasi/hehaocean3.jpg"
+        ]
+      },
+      "source": {
+        "listPage": "des1.html",
+        "detailPage": "dethehaocean.html"
+      },
+      "needsVerification": [
+        "info.ticket"
+      ],
+      "sources": [
+        "https://travel.kompas.com/read/2026/06/26/151500127/rute-harga-tiket-dan-jam-buka-ke-heha-ocean-view-yogyakarta",
+        "https://nominatim.openstreetmap.org/search?q=HeHa+Ocean+View+Girikarto+Panggang+Gunungkidul"
+      ],
+      "lastVerified": "2026-09-18"
+    },
+    {
+      "slug": "obelix-hills",
+      "name": "Obelix Hills",
+      "category": "kuliner",
+      "tags": [
+        "perbukitan",
+        "sunset",
+        "spot foto",
+        "bekas tambang"
+      ],
+      "shortDescription": "Perbukitan batu di Prambanan yang ditata menjadi taman pandang dengan latar Kota Yogyakarta dan Gunung Merapi.",
+      "description": [
+        "Obelix Hills berdiri di area bekas penambangan batu di Wukirharjo, Prambanan, yang kemudian ditata ulang menjadi kawasan wisata pandang. Dinding batu yang tersisa dari aktivitas tambang dibiarkan terbuka dan menjadi latar khas kawasan ini.",
+        "Dari sisi barat perbukitan, pengunjung dapat melihat hamparan Kota Yogyakarta, dan pada cuaca cerah puncak Gunung Merapi terlihat di kejauhan. Beragam anjungan dan dek pandang dibangun mengikuti kontur bukit, dengan waktu kunjungan paling ramai menjelang matahari terbenam."
+      ],
+      "location": {
+        "address": "Klumprit, Blok I & 2, Wukirharjo, Kec. Prambanan, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55572",
+        "regency": "Kabupaten Sleman",
+        "lat": -7.8066465,
+        "lng": 110.5198037,
+        "mapsUrl": "https://www.google.com/maps/place/Obelix+Hills/@-7.8063194,110.5184386,15z/data=!4m6!3m5!1s0x2e7a51ebf3f2fe45:0xb25efea185fd6810!8m2!3d-7.8063194!4d110.5184386!16s%2Fg%2F11lh5mv72z?hl=id&entry=ttu"
+      },
+      "info": {
+        "openingHours": "10.00 - 21.00 (Sen-Jum), 07.00 - 21.00 (Sab-Min & libur nasional)",
+        "ticket": {
+          "currency": "IDR",
+          "rates": [
+            {
+              "visitor": "local",
+              "day": "weekday",
+              "min": 20000,
+              "max": 20000
+            },
+            {
+              "visitor": "local",
+              "day": "weekend",
+              "min": 25000,
+              "max": 25000
+            }
+          ]
+        },
+        "notes": "Wahana seperti Skywalk, Eagle Nest, dan ayunan dikenakan biaya terpisah."
+      },
+      "images": {
+        "card": "/images/destinasi/olx3.png",
+        "gallery": [
+          "/images/destinasi/olx2.jpeg",
+          "/images/destinasi/olx1.jpg",
+          "/images/destinasi/olx4.jpeg",
+          "/images/destinasi/olx5.jpeg",
+          "/images/destinasi/olx6.webp"
+        ]
+      },
+      "source": {
+        "listPage": "des1.html",
+        "detailPage": "detolxhills.html"
+      },
+      "needsVerification": [
+        "info.openingHours",
+        "info.ticket"
+      ],
+      "sources": [
+        "https://www.detik.com/jogja/plesir/d-7155658/obelix-hills-daya-tarik-harga-tiket-masuk-dan-jam-buka",
+        "https://nominatim.openstreetmap.org/search?q=Obelix+Hills+Wukirharjo+Prambanan+Sleman"
+      ],
+      "lastVerified": "2026-09-18"
+    },
+    {
+      "slug": "taman-sari",
+      "name": "Taman Sari",
+      "category": "budaya",
+      "tags": [
+        "kraton",
+        "sejarah",
+        "pemandian",
+        "kampung wisata"
+      ],
+      "shortDescription": "Bekas taman dan pemandian kerajaan Kasultanan Yogyakarta dengan kolam bertingkat dan lorong bawah tanah.",
+      "description": [
+        "Taman Sari dibangun pada masa Sultan Hamengku Buwono I sebagai kompleks taman, pemandian, dan tempat peristirahatan keluarga Kasultanan Yogyakarta. Bagian yang paling dikenal adalah Umbul Binangun, gugus kolam bertingkat berpagar tembok tinggi dengan menara pandang di sisi selatan.",
+        "Di luar area kolam terdapat lorong-lorong bawah tanah dan Sumur Gumuling, bangunan melingkar dengan tangga bersilang di tengahnya yang dahulu berfungsi sebagai masjid. Kompleks ini kini menyatu dengan permukiman Kampung Wisata Taman Sari di belakang Kraton, sehingga kunjungan biasanya sekaligus menyusuri gang-gang kampung di sekitarnya."
+      ],
+      "location": {
+        "address": "Patehan, Kecamatan Kraton, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55133",
+        "regency": "Kota Yogyakarta",
+        "lat": -7.810151,
+        "lng": 110.358946,
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=-7.810151,110.358946"
+      },
+      "info": {
+        "openingHours": "09.00 - 15.00",
+        "ticket": {
+          "currency": "IDR",
+          "rates": [
+            {
+              "visitor": "local",
+              "day": "all",
+              "min": 15000,
+              "max": 15000
+            },
+            {
+              "visitor": "foreign",
+              "day": "all",
+              "min": 25000,
+              "max": 25000
+            }
+          ]
+        },
+        "notes": "Tarif anak Rp10.000 (domestik) dan Rp20.000 (mancanegara); anak di bawah 2 tahun gratis. Tarif resmi Dinas Pariwisata DIY, berlaku sejak 1 Maret 2023."
+      },
+      "images": {
+        "card": "/images/destinasi/taman7.webp",
+        "gallery": [
+          "/images/destinasi/taman1.jpg",
+          "/images/destinasi/taman2.jpg",
+          "/images/destinasi/taman3.png",
+          "/images/destinasi/taman4.jpg",
+          "/images/destinasi/taman5.webp",
+          "/images/destinasi/taman6.jpg",
+          "/images/destinasi/taman7.webp"
+        ]
+      },
+      "source": {
+        "listPage": "des1.html",
+        "detailPage": "dettmnsari.html"
+      },
+      "needsVerification": [],
+      "sources": [
+        "https://visitingjogja.jogjaprov.go.id/38875/harga-tiket-masuk-htm-baru-di-sejumlah-unit-pariwisata-keraton-yogyakarta/",
+        "https://en.wikipedia.org/wiki/Taman_Sari_(Yogyakarta)"
+      ],
+      "lastVerified": "2026-09-18"
+    },
+    {
+      "slug": "tebing-breksi",
+      "name": "Tebing Breksi",
+      "category": "alam",
+      "tags": [
+        "tebing",
+        "pahatan batu",
+        "amfiteater",
+        "bekas tambang"
+      ],
+      "shortDescription": "Bekas tambang batu breksi di Sambirejo yang dindingnya dipahat menjadi relief dan amfiteater terbuka.",
+      "description": [
+        "Tebing Breksi terbentuk dari aktivitas penambangan batuan breksi endapan vulkanik di Sambirejo, Prambanan. Setelah penambangan dihentikan, dinding batu yang tersisa dipahat warga menjadi relief bermotif wayang dan naga, sehingga kawasan ini berubah menjadi ruang wisata.",
+        "Di bagian tengah terdapat pelataran melingkar menyerupai amfiteater yang kerap dipakai untuk pertunjukan dan acara terbuka. Anak tangga di sisi tebing mengantar pengunjung ke bagian atas, tempat hamparan Sleman dan candi-candi di sekitarnya terlihat, terutama saat menjelang senja."
+      ],
+      "location": {
+        "address": "Sambirejo, Kec. Prambanan, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55572",
+        "regency": "Kabupaten Sleman",
+        "lat": -7.7814295,
+        "lng": 110.5049834,
+        "mapsUrl": "https://www.google.com/maps/place/Tebing+Breksi/@-7.7815714,110.5045827,15z/data=!4m2!3m1!1s0x0:0xa4b0fc6ad0ae38c7?sa=X&ved=2ahUKEwjamrWruIGDAxXOSGwGHQMxCDwQ_BJ6BAgQEAA&hl=id"
+      },
+      "info": {
+        "openingHours": "07.00 - 21.00",
+        "ticket": {
+          "currency": "IDR",
+          "rates": [
+            {
+              "visitor": "local",
+              "day": "all",
+              "min": 10000,
+              "max": 10000
+            },
+            {
+              "visitor": "foreign",
+              "day": "all",
+              "min": 20000,
+              "max": 20000
+            }
+          ]
+        },
+        "notes": "Parkir dikenakan terpisah mulai Rp2.000 (motor) hingga Rp25.000 (bus besar)."
+      },
+      "images": {
+        "card": "/images/destinasi/breksi3.jpeg",
+        "gallery": [
+          "/images/destinasi/breksi1.webp",
+          "/images/destinasi/breksi2.webp",
+          "/images/destinasi/breksi3.jpeg",
+          "/images/destinasi/breksi4.jpg",
+          "/images/destinasi/breksi5.jpg",
+          "/images/destinasi/breksi6.jpg"
+        ]
+      },
+      "source": {
+        "listPage": "des1.html",
+        "detailPage": "detbreksi.html"
+      },
+      "needsVerification": [
+        "info.openingHours",
+        "info.ticket"
+      ],
+      "sources": [
+        "https://wisata.harianjogja.com/r-1159348/mulai-diserbu-pengunjung-berikut-harga-tiket-masuk-dan-jam-buka-objek-wisata-tebing-breksi",
+        "https://nominatim.openstreetmap.org/search?q=Tebing+Breksi+Sambirejo+Prambanan+Sleman"
+      ],
+      "lastVerified": "2026-09-18"
+    },
+    {
+      "slug": "gembira-loka",
+      "name": "Gembira Loka",
+      "category": "taman-hiburan",
+      "tags": [
+        "kebun binatang",
+        "keluarga",
+        "edukasi",
+        "perahu"
+      ],
+      "shortDescription": "Kebun binatang tertua di Yogyakarta dengan koleksi satwa, taman burung, dan wahana air untuk keluarga.",
+      "description": [
+        "Gembira Loka Zoo adalah kebun binatang tertua dan terbesar di Yogyakarta, terletak di sisi timur kota dan dilintasi aliran Sungai Gajah Wong. Koleksinya mencakup satwa mamalia, reptil, dan burung, dengan beberapa area yang memungkinkan pengunjung berinteraksi langsung dengan satwa tertentu di bawah pengawasan petugas.",
+        "Selain kandang dan taman satwa, kawasan ini menyediakan perahu kayuh, transportasi keliling, serta area edukasi yang ditujukan untuk rombongan sekolah. Luas kawasan membuat kunjungan menyeluruh membutuhkan waktu beberapa jam, sehingga banyak keluarga datang sejak pagi."
+      ],
+      "location": {
+        "address": "Kotagede, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55171",
+        "regency": "Kota Yogyakarta",
+        "lat": -7.803968,
+        "lng": 110.397873,
+        "mapsUrl": "https://www.google.com/maps/place/Gembira+Loka+Zoo/@-7.8040165,110.397994,15z/data=!4m2!3m1!1s0x0:0x77e3f6112577fb0f?sa=X&ved=2ahUKEwjDq-O0uoGDAxXKbGwGHV8lAAcQ_BJ6BAgPEAA&hl=id"
+      },
+      "info": {
+        "openingHours": "08.00 - 16.00",
+        "ticket": {
+          "currency": "IDR",
+          "rates": [
+            {
+              "visitor": "local",
+              "day": "weekday",
+              "min": 70000,
+              "max": 70000
+            },
+            {
+              "visitor": "local",
+              "day": "weekend",
+              "min": 85000,
+              "max": 85000
+            }
+          ]
+        },
+        "notes": "Tarif berlaku sejak 30 Maret 2026. Anak dengan tinggi badan di bawah 90 cm dan lansia madya bebas tiket masuk."
+      },
+      "images": {
+        "card": "/images/destinasi/loka2.jpeg",
+        "gallery": [
+          "/images/destinasi/loka2.jpeg",
+          "/images/destinasi/loka6.jpg",
+          "/images/destinasi/loka1.jpg",
+          "/images/destinasi/loka3.webp",
+          "/images/destinasi/loka4.jpg",
+          "/images/destinasi/loka5.jpg"
+        ]
+      },
+      "source": {
+        "listPage": "des1.html",
+        "detailPage": "detloka.html"
+      },
+      "needsVerification": [],
+      "sources": [
+        "https://gembiralokazoo.com/news/gembira-loka-zoo-umumkan-penyesuaian-harga-tiket-mulai-30-maret",
+        "https://gembiralokazoo.com/ticket",
+        "https://en.wikipedia.org/wiki/Gembira_Loka_Zoo"
+      ],
+      "lastVerified": "2026-09-18"
+    },
+    {
+      "slug": "pantai-parangtritis",
+      "name": "Pantai Parangtritis",
+      "category": "pantai",
+      "tags": [
+        "pantai selatan",
+        "gumuk pasir",
+        "legenda",
+        "sunset"
+      ],
+      "shortDescription": "Pantai paling dikenal di selatan Yogyakarta, dengan gumuk pasir dan ombak besar yang berbatasan langsung dengan Samudra Hindia.",
+      "description": [
+        "Pantai Parangtritis terletak di Kretek, Bantul, dan menjadi pantai yang paling lekat dengan citra Yogyakarta. Garis pantainya panjang dan terbuka, dibatasi perbukitan karst di sisi timur serta hamparan gumuk pasir di bagian baratnya, satu-satunya bentang gumuk pasir tipe barchan di Asia Tenggara.",
+        "Kawasan ini juga sarat cerita tutur tentang Nyi Roro Kidul, penguasa laut selatan dalam kepercayaan masyarakat setempat, dan menjadi lokasi upacara adat seperti labuhan. Arus laut di sini kuat dan berbahaya untuk berenang, sehingga pengunjung diminta mengikuti batas aman yang ditetapkan petugas SAR pantai."
+      ],
+      "location": {
+        "address": "Parangtritis, Kretek, Bantul, Daerah Istimewa Yogyakarta, Indonesia",
+        "regency": "Kabupaten Bantul",
+        "lat": -8.0272827,
+        "lng": 110.3370078,
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.0272827,110.3370078"
+      },
+      "info": {
+        "openingHours": null,
+        "ticket": {
+          "currency": "IDR",
+          "rates": [
+            {
+              "visitor": "local",
+              "day": "all",
+              "min": 15000,
+              "max": 15000
+            }
+          ]
+        },
+        "notes": "Retribusi kawasan berdasarkan Keputusan Bupati Bantul Nomor 240 Tahun 2026; satu tiket berlaku untuk kawasan Pantai Parangtritis sampai Pantai Depok."
+      },
+      "images": {
+        "card": "/images/destinasi/parangtritis1.jpg",
+        "gallery": [
+          "/images/destinasi/parangtritis2.png",
+          "/images/destinasi/parangtritis3.webp",
+          "/images/destinasi/parangtritis4.jpg",
+          "/images/destinasi/parangtritis5.jpg",
+          "/images/destinasi/parangtritis1.jpg",
+          "/images/destinasi/parangtritis6.jpg"
+        ]
+      },
+      "source": {
+        "listPage": "des2.html",
+        "detailPage": "detptritis.html"
+      },
+      "needsVerification": [],
+      "sources": [
+        "https://yogyakarta.kompas.com/read/2026/07/01/152556278/cegah-modus-wisatawan-numpang-lewat-penarikan-retribusi-pantai",
+        "https://nominatim.openstreetmap.org/search?q=Pantai+Parangtritis+Kretek+Bantul"
+      ],
+      "lastVerified": "2026-09-18"
+    },
+    {
+      "slug": "pantai-indrayanti",
+      "name": "Pantai Indrayanti",
+      "category": "pantai",
+      "tags": [
+        "pantai selatan",
+        "pasir putih",
+        "tebing karang",
+        "kuliner"
+      ],
+      "shortDescription": "Pantai berpasir putih di Tepus yang diapit tebing karang, dikenal bersih dan rapi dengan deretan kedai di tepinya.",
+      "description": [
+        "Pantai Indrayanti berada di Sidoharjo, Tepus, Gunung Kidul, dan secara resmi bernama Pantai Pulang Sawal. Nama Indrayanti lebih populer karena diambil dari nama rumah makan pertama yang berdiri di tepi pantai ini.",
+        "Teluk kecilnya dibatasi tebing karang di kedua sisi, dengan pasir putih dan air yang jernih saat surut. Kawasan ini dikelola cukup rapi dan dikenal bersih, dengan deretan kedai serta penginapan di sepanjang garis pantai; tebing di sisi timur dapat didaki untuk melihat pantai dari ketinggian."
+      ],
+      "location": {
+        "address": "Sidoharjo, Kec. Tepus, Kabupaten Gunung Kidul, Daerah Istimewa Yogyakarta 55881",
+        "regency": "Kabupaten Gunung Kidul",
+        "lat": -8.1498929,
+        "lng": 110.6113168,
+        "mapsUrl": "https://www.google.com/maps/place/Pantai+Indrayanti/@-8.1507833,110.6099911,17z/data=!4m14!1m7!3m6!1s0x2e7bba2bebcb0c7f:0x854daae21d9d9724!2sPantai+Pulang+Sawal!8m2!3d-8.1506589!4d110.6126311!16s%2Fg%2F11_ygm9_9!3m5!1s0x2e7bba2bc08969f7:0x6df3fa2309bb186a!8m2!3d-8.1502919!4d110.6121188!16s%2Fg%2F12hkdw4v5?entry=ttu"
+      },
+      "info": {
+        "openingHours": null,
+        "ticket": {
+          "currency": "IDR",
+          "rates": [
+            {
+              "visitor": "local",
+              "day": "all",
+              "min": 15000,
+              "max": 15000
+            }
+          ]
+        },
+        "notes": "Retribusi Kawasan I Gunungkidul (terdaftar sebagai Pantai Pulangsawal) berdasarkan Perda Kabupaten Gunungkidul Nomor 9 Tahun 2023, berlaku sejak 1 Januari 2024. Satu tiket berlaku untuk seluruh pantai dalam kawasan yang sama."
+      },
+      "images": {
+        "card": "/images/destinasi/indra4.jpg",
+        "gallery": [
+          "/images/destinasi/indra1.jpg",
+          "/images/destinasi/indra2.png",
+          "/images/destinasi/indra5.webp",
+          "/images/destinasi/indra4.jpg",
+          "/images/destinasi/indra6.jpg",
+          "/images/destinasi/indra7.jpg"
+        ]
+      },
+      "source": {
+        "listPage": "des2.html",
+        "detailPage": "detindrayanti.html"
+      },
+      "needsVerification": [],
+      "sources": [
+        "https://peraturan.bpk.go.id/Details/277147/perda-kab-gunungkidul-no-9-tahun-2023",
+        "https://jogjapolitan.harianjogja.com/read/2024/01/02/513/1160165/dongkrak-pad-mulai-tahun-ini-retribusi-kawasan-pantai-gunungkidul-resmi-naik",
+        "https://nominatim.openstreetmap.org/search?q=Pantai+Indrayanti+Tepus+Gunungkidul"
+      ],
+      "lastVerified": "2026-09-18"
+    },
+    {
+      "slug": "waterboom-jogja",
+      "name": "Waterboom Jogja",
+      "category": "taman-hiburan",
+      "tags": [
+        "waterpark",
+        "keluarga",
+        "wahana air",
+        "bertema bajak laut",
+        "jogja bay"
+      ],
+      "shortDescription": "Taman rekreasi air bertema bajak laut di Maguwoharjo dengan belasan wahana untuk segala usia.",
+      "description": [
+        "Waterboom Jogja, yang sebelumnya dikenal sebagai Jogja Bay Pirates Adventure Waterpark, adalah taman rekreasi air di Maguwoharjo, Depok, Sleman, yang mengusung tema petualangan bajak laut pada seluruh bangunan dan wahananya. Kawasan ini menyediakan belasan wahana, mulai dari kolam arus dan kolam ombak hingga seluncuran tinggi untuk pengunjung dewasa.",
+        "Tersedia pula area bermain khusus anak dengan kedalaman kolam yang dangkal, sehingga kawasan ini banyak dituju rombongan keluarga. Lokasinya berdekatan dengan Stadion Maguwoharjo dan relatif mudah dijangkau dari pusat kota maupun bandara."
+      ],
+      "location": {
+        "address": "Jl. Utara, Jenengan, Maguwoharjo, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281",
+        "regency": "Kabupaten Sleman",
+        "lat": -7.7472493,
+        "lng": 110.4189062,
+        "mapsUrl": "https://www.google.com/maps/place/Jogja+Bay+Pirates+Adventure+Waterpark/@-7.7488047,110.418878,15z/data=!4m14!1m7!3m6!1s0x2e7a5bd52e7e19b7:0xbef22cb0aeba5965!2sJogja+Bay+Pirates+Adventure+Waterpark!8m2!3d-7.7488047!4d110.418878!16s%2Fg%2F11bvt2v65z!3m5!1s0x2e7a5bd52e7e19b7:0xbef22cb0aeba5965!8m2!3d-7.7488047!4d110.418878!16s%2Fg%2F11bvt2v65z?hl=id&entry=ttu"
+      },
+      "info": {
+        "openingHours": null,
+        "ticket": {
+          "currency": "IDR",
+          "rates": []
+        },
+        "notes": "Sebelumnya bernama Jogja Bay Pirates Adventure Waterpark. Jam buka dan harga tiket belum tersedia di sini, silakan cek langsung ke pengelola sebelum berkunjung."
+      },
+      "images": {
+        "card": "/images/destinasi/bay9.webp",
+        "gallery": [
+          "/images/destinasi/bay3.webp",
+          "/images/destinasi/bay4.jpg",
+          "/images/destinasi/bay5.jpg",
+          "/images/destinasi/bay6.jpg",
+          "/images/destinasi/bay7.jpg",
+          "/images/destinasi/bay8.jpg",
+          "/images/destinasi/bay9.webp"
+        ]
+      },
+      "source": {
+        "listPage": "des2.html",
+        "detailPage": "detbay.html"
+      },
+      "needsVerification": [],
+      "sources": [
+        "https://nominatim.openstreetmap.org/search?q=Jogja+Bay+Waterpark"
+      ],
+      "lastVerified": "2026-09-18"
+    },
+    {
+      "slug": "pantai-ngobaran",
+      "name": "Pantai Ngobaran",
+      "category": "pantai",
+      "tags": [
+        "pantai selatan",
+        "pura",
+        "budaya",
+        "tebing karang"
+      ],
+      "shortDescription": "Pantai bertebing di Saptosari dengan pura dan tempat ibadah yang berdiri berdampingan di atas karang.",
+      "description": [
+        "Pantai Ngobaran terletak di Desa Kanigoro, Saptosari, Gunung Kidul, dan berbeda dari pantai selatan lainnya karena garis pantainya didominasi tebing dan hamparan karang, bukan pasir yang luas. Saat air surut, karang di bawah tebing terbuka dan tertutup rumput laut hijau yang kerap dipanen warga setempat.",
+        "Di atas tebing berdiri pura serta beberapa tempat ibadah dari keyakinan berbeda yang berdampingan, dan kawasan ini masih digunakan untuk upacara adat Kejawen maupun Hindu. Perpaduan tersebut membuat Ngobaran lebih sering dikunjungi untuk menikmati suasana dan lanskapnya daripada untuk berenang."
+      ],
+      "location": {
+        "address": "Desa Kanigoro, Kecamatan Saptosari, Kabupaten Gunung Kidul, Daerah Istimewa Yogyakarta",
+        "regency": "Kabupaten Gunung Kidul",
+        "lat": -8.1184844,
+        "lng": 110.5028785,
+        "mapsUrl": "https://www.google.com/maps/place/Pantai+Ngobaran/@-8.1186572,110.5000027,17z/data=!3m1!4b1!4m6!3m5!1s0x2e7baff5f2c488cf:0xe486a1ea9b1e1804!8m2!3d-8.1184844!4d110.5028785!16s%2Fg%2F11x7vtp6d?entry=ttu"
+      },
+      "info": {
+        "openingHours": null,
+        "ticket": {
+          "currency": "IDR",
+          "rates": [
+            {
+              "visitor": "local",
+              "day": "all",
+              "min": 8000,
+              "max": 8000
+            }
+          ]
+        },
+        "notes": "Retribusi Kawasan II Gunungkidul (bersama Pantai Ngrenehan, Nguyahan, Widodaren, dan Torohudan) berdasarkan Perda Kabupaten Gunungkidul Nomor 9 Tahun 2023, berlaku sejak 1 Januari 2024."
+      },
+      "images": {
+        "card": "/images/destinasi/ngobar5.jpeg",
+        "gallery": [
+          "/images/destinasi/ngobar1.jpg",
+          "/images/destinasi/ngobar2.jpg",
+          "/images/destinasi/ngobar3.jpg",
+          "/images/destinasi/ngobar4.jpg",
+          "/images/destinasi/ngobar5.jpeg",
+          "/images/destinasi/ngobar6.jpg",
+          "/images/destinasi/ngobar7.jpg"
+        ]
+      },
+      "source": {
+        "listPage": "des2.html",
+        "detailPage": "detngobaran.html"
+      },
+      "needsVerification": [],
+      "sources": [
+        "https://jogjapolitan.harianjogja.com/read/2024/01/02/513/1160165/dongkrak-pad-mulai-tahun-ini-retribusi-kawasan-pantai-gunungkidul-resmi-naik",
+        "https://nominatim.openstreetmap.org/search?q=Pantai+Ngobaran+Kanigoro+Saptosari+Gunungkidul"
+      ],
+      "lastVerified": "2026-09-18"
+    }
+  ]
+}
