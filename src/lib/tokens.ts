@@ -75,7 +75,7 @@ export const colorTokens: ColorToken[] = [
     light: "#B8893A",
     dark: "#D6A85A",
     note:
-      "Emas kraton. Hanya untuk unsur non-teks: garis, ikon, tepi, aksen dekoratif. " +
+      "Emas keraton. Hanya untuk unsur non-teks: garis, ikon, tepi, aksen dekoratif. " +
       "Kontrasnya di atas kertas terlalu rendah untuk teks.",
   },
   {

@@ -3,6 +3,7 @@ import { Fraunces, Inter } from "next/font/google";
 
 import { SiteFooter } from "@/src/components/site-footer";
 import { SiteHeader } from "@/src/components/site-header";
+import { siteUrl } from "@/src/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -20,16 +21,31 @@ const fraunces = Fraunces({
   axes: ["SOFT", "opsz"],
 });
 
+const DESCRIPTION =
+  "Panduan destinasi wisata Daerah Istimewa Yogyakarta: candi, kawasan keraton, pantai selatan, dan perbukitan Gunungkidul.";
+
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
-  ),
+  // Semua jalur relatif pada alternates dan openGraph dilengkapi dari sini,
+  // jadi tag canonical dan og:image ikut memakai NEXT_PUBLIC_SITE_URL.
+  metadataBase: siteUrl,
   title: {
     default: "HolidayIn - Panduan Wisata Yogyakarta",
     template: "%s | HolidayIn",
   },
-  description:
-    "Panduan destinasi wisata Daerah Istimewa Yogyakarta: candi, kawasan kraton, pantai selatan, dan perbukitan Gunung Kidul.",
+  description: DESCRIPTION,
+  openGraph: {
+    type: "website",
+    locale: "id_ID",
+    siteName: "HolidayIn",
+    title: "HolidayIn - Panduan Wisata Yogyakarta",
+    description: DESCRIPTION,
+    url: "/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "HolidayIn - Panduan Wisata Yogyakarta",
+    description: DESCRIPTION,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

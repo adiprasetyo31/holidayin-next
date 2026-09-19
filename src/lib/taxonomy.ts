@@ -1,13 +1,16 @@
 /**
- * Satu-satunya tempat label pendek wilayah dan kategori ditulis.
+ * Satu-satunya tempat label wilayah dan kategori yang tampil di layar ditulis.
  *
  * Berkas ini sengaja tidak mengimpor destinations.json. Dengan begitu komponen
  * klien boleh memakainya tanpa ikut menyeret seluruh data destinasi ke bundel
  * peramban, dan label di beranda selalu sama dengan label di penyaring
  * /destinasi karena keduanya membaca dari sini.
  *
- * Label panjang ("Kabupaten Sleman", "Budaya & Sejarah") tetap tinggal di
- * destinations.json dan dipakai pada kartu serta halaman detail.
+ * Seluruh UI memakai label pendek ini: kartu, judul halaman detail, pil filter,
+ * dan navigasi beranda. Label panjang di destinations.json ("Kabupaten Sleman",
+ * "Budaya & Sejarah") tidak lagi ditampilkan; sisanya hanya dua peran, yaitu
+ * cadangan bila ada id baru yang belum terdaftar di sini, dan bahan pencarian
+ * di matchesQuery supaya kueri "Kabupaten Sleman" tetap menemukan hasil.
  */
 
 export const REGION_SHORT_LABEL: Record<string, string> = {

@@ -19,13 +19,38 @@ export async function generateMetadata({
   const destination = getDestination(slug);
   if (!destination) return {};
 
+  const path = `/destinasi/${destination.slug}`;
+
+  // images.card selalu ada untuk destinasi published, tapi tipenya tetap boleh
+  // null, jadi tag og:image dihilangkan alih-alih diisi jalur kosong.
+  // metadataBase melengkapi jalur relatif ini menjadi URL absolut.
+  const images = destination.images.card
+    ? [
+        {
+          url: destination.images.card.src,
+          width: 1600,
+          height: 1200,
+          alt: destination.name,
+        },
+      ]
+    : [];
+
   return {
     title: destination.name,
     description: destination.shortDescription,
+    alternates: { canonical: path },
     openGraph: {
+      type: "article",
       title: destination.name,
       description: destination.shortDescription,
-      images: destination.images.card ? [destination.images.card.src] : [],
+      url: path,
+      images,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: destination.name,
+      description: destination.shortDescription,
+      images,
     },
   };
 }

@@ -1,5 +1,9 @@
 import { DestinationCard } from "@/src/components/destination-card";
-import { getRelated, regionLabel, type Destination } from "@/src/lib/destinations";
+import {
+  getRelated,
+  regionShortLabel,
+  type Destination,
+} from "@/src/lib/destinations";
 
 /**
  * Saran destinasi berikutnya. Dipisah jadi komponen sendiri supaya bagian lain,
@@ -14,7 +18,7 @@ export function RelatedDestinations({
   if (items.length === 0) return null;
 
   const judul = sameRegion
-    ? `Destinasi lain di ${regionLabel(destination.region)}`
+    ? `Destinasi lain di ${regionShortLabel(destination.region)}`
     : "Destinasi lain";
 
   return (

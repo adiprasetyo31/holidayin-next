@@ -16,7 +16,7 @@ scripts on MySQL — rebuilt from scratch in Next.js as a portfolio project.
 ![Database](https://img.shields.io/badge/database-none-7A6A5C?style=flat-square)
 ![Content](https://img.shields.io/badge/content-Bahasa_Indonesia-9C5B2E?style=flat-square)
 
-**Live demo:** _not deployed yet_
+**[Live demo &rarr; holidayin-six.vercel.app](https://holidayin-six.vercel.app)**
 
 </div>
 
@@ -123,13 +123,16 @@ app/
   destinasi/[slug]/page.tsx detail — statically generated per destination
   styleguide/page.tsx       colour tokens with live contrast ratios
   not-found.tsx             404
+  sitemap.ts                built from the published destinations
+  robots.ts                 allows everything but /styleguide
   globals.css               Tailwind v4 theme tokens
 
 src/
   data/destinations.json    content, sources, licences, lastVerified
   data/events.json          extracted, not yet routed (phase 2)
   lib/destinations.ts       types + the published filter, in one place
-  lib/taxonomy.ts           region and category labels
+  lib/taxonomy.ts           the display labels every component reads
+  lib/site.ts               canonical origin for metadata, sitemap, robots
   lib/tokens.ts             colour tokens shared with the style guide
   components/               18 components, server-first
 
@@ -151,7 +154,7 @@ legacy/                     the original project, reference only
 ## Design
 
 The palette is drawn from Yogyakarta itself: *sogan* batik brown, Merapi
-andesite grey, and kraton gold.
+andesite grey, and keraton gold.
 
 ![background](https://img.shields.io/badge/background-%23F7F3EC-F7F3EC?style=flat-square&labelColor=2B211A)
 ![surface](https://img.shields.io/badge/surface-%23EFE7DA-EFE7DA?style=flat-square&labelColor=2B211A)
@@ -162,7 +165,7 @@ andesite grey, and kraton gold.
 ![stone](https://img.shields.io/badge/stone-%235E6660-5E6660?style=flat-square&labelColor=2B211A)
 ![dark bg](https://img.shields.io/badge/dark_bg-%231A1612-1A1612?style=flat-square&labelColor=2B211A)
 
-`highlight` is the kraton gold, and it is deliberately **never** used as a text
+`highlight` is the keraton gold, and it is deliberately **never** used as a text
 colour: at 2.84:1 on the paper background it fails AA for body text and even the
 3:1 large-text floor. It is reserved for rules, icons, borders, and decorative
 detail. That constraint is why `/styleguide` exists — it renders every token
@@ -309,8 +312,8 @@ npm run dev          # http://localhost:3000
 - [ ] Fix the two contrast failures above, and raise the light-mode `muted` and
       `accent` tokens, which fall just below AA when used on the `surface`
       background rather than on the page background.
-- [ ] Per-page canonical URLs, `sitemap.ts`, and `robots.ts`.
-- [ ] Dynamic Open Graph images per destination.
+- [x] Per-page canonical URLs, `sitemap.ts`, and `robots.ts`.
+- [ ] Dynamic Open Graph images per destination (static card photos are used today).
 - [ ] A `/kredit-foto` page listing every photo with its author, source, and licence.
 
 **Phase 2**

@@ -4,7 +4,7 @@
  * tempat itu. Aturannya sama dengan info praktis: lebih baik kosong dan jujur
  * daripada diisi seadanya.
  *
- * Garis diagonalnya memakai highlight, warna emas kraton yang memang hanya
+ * Garis diagonalnya memakai highlight, warna emas keraton yang memang hanya
  * untuk hiasan, bukan untuk teks. Tulisannya sendiri memakai muted.
  */
 export function NoPhoto({ tone = "default" }: { tone?: "default" | "on-scrim" }) {

@@ -10,8 +10,8 @@ export function SiteFooter() {
           </p>
           <p className="mt-3 max-w-md text-caption text-muted">
             Panduan singkat destinasi wisata di Daerah Istimewa Yogyakarta, mulai
-            dari candi dan kawasan kraton hingga pantai selatan dan perbukitan
-            Gunung Kidul.
+            dari candi dan kawasan keraton hingga pantai selatan dan perbukitan
+            Gunungkidul.
           </p>
         </div>
 

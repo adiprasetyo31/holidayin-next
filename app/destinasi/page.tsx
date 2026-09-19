@@ -18,10 +18,21 @@ import {
   regions,
 } from "@/src/lib/destinations";
 
+const DESCRIPTION =
+  "Daftar destinasi wisata Yogyakarta dengan penyaring wilayah, kategori, dan pencarian.";
+
+// Canonical menunjuk /destinasi polos, bukan alamat berfilter. Setiap kombinasi
+// wilayah, kategori, kueri, dan halaman menghasilkan URL sendiri; tanpa ini
+// perayap akan memperlakukan ratusan varian itu sebagai halaman terpisah.
 export const metadata: Metadata = {
   title: "Destinasi",
-  description:
-    "Daftar destinasi wisata Yogyakarta dengan penyaring wilayah, kategori, dan pencarian.",
+  description: DESCRIPTION,
+  alternates: { canonical: "/destinasi" },
+  openGraph: {
+    title: "Destinasi",
+    description: DESCRIPTION,
+    url: "/destinasi",
+  },
 };
 
 const CHIP_BASE =

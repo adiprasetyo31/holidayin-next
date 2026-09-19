@@ -3,8 +3,8 @@ import Link from "next/link";
 
 import { NoPhoto } from "@/src/components/no-photo";
 import {
-  categoryLabel,
-  regionLabel,
+  categoryShortLabel,
+  regionShortLabel,
   type Destination,
 } from "@/src/lib/destinations";
 
@@ -35,14 +35,14 @@ export function DestinationCard({
 
         <div className="p-5">
           <p className="text-micro font-medium uppercase text-accent">
-            {categoryLabel(destination.category)}
+            {categoryShortLabel(destination.category)}
           </p>
           <h3 className="mt-2 font-display text-h4">{destination.name}</h3>
           <p className="mt-2 line-clamp-3 text-caption text-muted">
             {destination.shortDescription}
           </p>
           <p className="mt-4 text-micro tracking-normal text-stone">
-            {regionLabel(destination.region)}
+            {regionShortLabel(destination.region)}
           </p>
         </div>
       </Link>

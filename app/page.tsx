@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -12,6 +13,11 @@ import {
   filledRegions,
   getDestination,
 } from "@/src/lib/destinations";
+
+// Judul dan deskripsi diwarisi dari layout; di sini hanya canonical beranda.
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const HERO = "candi-prambanan";
 
@@ -58,7 +64,7 @@ export default function Home() {
           <p className="mt-5 max-w-xl text-body-lg text-on-scrim-muted">
             {destinations.length} destinasi di {filledRegions.length} wilayah
             Yogyakarta. Cari berdasarkan kategori atau wilayah, cek info
-            kunjungan, lalu buka lokasinya langsung di peta.
+            kunjungan, lalu buka lokasinya di Google Maps.
           </p>
           <Link href="/destinasi" className={buttonClass({ className: "mt-8" })}>
             Jelajahi destinasi

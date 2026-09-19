@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 import {
-  categoryLabel,
+  categoryShortLabel,
   destinasiHref,
-  regionLabel,
+  regionShortLabel,
   type Destination,
 } from "@/src/lib/destinations";
 
@@ -43,7 +43,7 @@ export function DestinationTitle({
           href={destinasiHref({ kategori: destination.category })}
           className="hover:underline"
         >
-          {categoryLabel(destination.category)}
+          {categoryShortLabel(destination.category)}
         </Link>
         <span aria-hidden className="text-muted">
           &middot;
@@ -52,7 +52,7 @@ export function DestinationTitle({
           href={destinasiHref({ wilayah: destination.region })}
           className="hover:underline"
         >
-          {regionLabel(destination.region)}
+          {regionShortLabel(destination.region)}
         </Link>
       </p>
 
