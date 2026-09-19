@@ -7,12 +7,12 @@ import { RegionCards } from "@/src/components/region-cards";
 import { buttonClass } from "@/src/components/ui/button";
 import {
   destinations,
+  featuredDestinations,
   filledCategories,
   filledRegions,
   getDestination,
 } from "@/src/lib/destinations";
 
-const UNGGULAN = ["candi-prambanan", "pantai-indrayanti", "heha-sky-view"];
 const HERO = "candi-prambanan";
 
 const STATS = [
@@ -22,9 +22,7 @@ const STATS = [
 ];
 
 export default function Home() {
-  const unggulan = UNGGULAN.map(getDestination).filter(
-    (d): d is NonNullable<typeof d> => Boolean(d)
-  );
+  const pilihan = featuredDestinations;
 
   // Foto hero diambil dari data, bukan jalur yang ditulis tangan, supaya ikut
   // berpindah saat berkas gambar diganti.
@@ -79,29 +77,42 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-page px-gutter py-block">
+      {/* Irama tegak beranda: tiap bagian setelah hero dibuka pt-section, dan
+          bagian terakhir menutup dengan pb-section. Jaraknya jadi sama di
+          keempat peralihan: hero, wilayah, kategori, destinasi pilihan. */}
+      <section className="mx-auto max-w-page px-gutter pt-section">
         <h2 className="font-display text-h2">Telusuri per wilayah</h2>
         <RegionCards />
+      </section>
 
-        <h2 className="mt-block font-display text-h2">Telusuri per kategori</h2>
+      <section className="mx-auto max-w-page px-gutter pt-section">
+        <h2 className="font-display text-h2">Telusuri per kategori</h2>
         <CategoryTiles />
       </section>
 
-      <section className="mx-auto max-w-page px-gutter pb-8">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <h2 className="font-display text-h2">Destinasi pilihan</h2>
+      {/*
+        Judul, kisi, lalu tautan: urutan DOM ini langsung jadi urutan di layar
+        sempit, sehingga "Lihat semua" jatuh di bawah kisi. Mulai sm penempatan
+        kisinya diatur eksplisit supaya tautan naik sebaris dengan judul.
+      */}
+      <section className="mx-auto max-w-page px-gutter pt-section pb-section">
+        <div className="grid gap-y-8 sm:grid-cols-[1fr_auto] sm:items-baseline">
+          <h2 className="font-display text-h2 sm:col-start-1 sm:row-start-1">
+            Destinasi pilihan
+          </h2>
+
+          <div className="grid gap-6 sm:col-span-2 sm:row-start-2 sm:grid-cols-2 lg:grid-cols-3">
+            {pilihan.map((destination) => (
+              <DestinationCard key={destination.slug} destination={destination} />
+            ))}
+          </div>
+
           <Link
             href="/destinasi"
-            className="text-caption font-medium text-accent hover:underline"
+            className="text-caption font-medium text-accent hover:underline sm:col-start-2 sm:row-start-1 sm:justify-self-end"
           >
             Lihat semua {destinations.length} destinasi
           </Link>
-        </div>
-
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {unggulan.map((destination) => (
-            <DestinationCard key={destination.slug} destination={destination} />
-          ))}
         </div>
       </section>
     </>

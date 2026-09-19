@@ -34,6 +34,8 @@ export type Destination = {
   category: string;
   /** false berarti datanya belum siap tayang; lihat catatan pada `destinations`. */
   published: boolean;
+  /** true untuk yang tampil di bagian pilihan beranda. Selalu published. */
+  featured: boolean;
   tags: string[];
   shortDescription: string;
   description: string[];
@@ -77,6 +79,15 @@ export const allDestinations = data.destinations as Destination[];
 export const destinations = allDestinations.filter((d) => d.published);
 export const categories = data.categories as Category[];
 export const regions = data.regions as Region[];
+
+/**
+ * Destinasi pilihan untuk beranda, mengikuti urutan di berkas data. Disaring
+ * dari destinations yang sudah published, jadi satu destinasi tidak akan pernah
+ * muncul di beranda sementara halaman detailnya tidak ada.
+ */
+export const featuredDestinations: Destination[] = destinations.filter(
+  (d) => d.featured
+);
 
 export const PER_PAGE = 12;
 

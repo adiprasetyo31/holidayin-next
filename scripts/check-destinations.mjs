@@ -88,6 +88,14 @@ for (const d of data.destinations) {
     fail(at, "punya foto kartu tetapi published masih false");
   }
 
+  // featured hanya untuk yang sudah tayang: kalau tidak, beranda bisa menaut
+  // ke halaman yang tidak dibuat.
+  if (typeof d.featured !== "boolean") {
+    fail(at, `featured bukan boolean: ${d.featured}`);
+  } else if (d.featured && !d.published) {
+    fail(at, "featured true tetapi published false");
+  }
+
   if (!Array.isArray(d.tags) || d.tags.length === 0) fail(at, "tags kosong");
   if (!d.shortDescription) fail(at, "shortDescription kosong");
   if (!Array.isArray(d.description) || d.description.length === 0) {
@@ -199,7 +207,9 @@ if (existsSync(IMAGE_DIR)) {
 for (const w of warnings) console.warn(`  peringatan  ${w}`);
 for (const e of errors) console.error(`  galat       ${e}`);
 
-const ringkas = `${data.destinations.length} destinasi, ${data.regions.length} wilayah, ${data.categories.length} kategori`;
+const terbit = data.destinations.filter((d) => d.published).length;
+const pilihan = data.destinations.filter((d) => d.featured).length;
+const ringkas = `${data.destinations.length} destinasi (${terbit} tayang, ${pilihan} pilihan), ${data.regions.length} wilayah, ${data.categories.length} kategori`;
 
 if (errors.length > 0) {
   console.error(`\nGAGAL: ${errors.length} galat, ${warnings.length} peringatan (${ringkas}).`);

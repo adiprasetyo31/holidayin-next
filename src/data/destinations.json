@@ -14,7 +14,8 @@
       "Setiap gambar adalah objek { src, imageCredit }. imageCredit memuat author, sourceUrl, license, dan licenseUrl. Foto hanya bersumber dari Wikimedia Commons atau Unsplash.",
       "images.card boleh null bila belum ada foto berlisensi yang layak; kartu dan hero memakai panel polos, bukan foto yang tidak nyambung. images.gallery ikut kosong dalam kasus itu.",
       "Foto Commons diunduh ulang sebagai WebP lebar maksimum 1600 px dan diberi nama <slug>-<n>.webp. Foto warisan yang belum punya imageCredit tersisa di gembira-loka, heha-ocean-view, dan waterboom-jogja karena belum ada padanan berlisensi.",
-      "published menandai destinasi yang tampil di situs. Destinasi tanpa foto berlisensi diberi published false dan disembunyikan dari daftar, filter, pencarian, saran destinasi lain, angka di beranda, serta rute statis. Datanya tetap disimpan supaya bisa dinyalakan begitu fotonya ada."
+      "published menandai destinasi yang tampil di situs. Destinasi tanpa foto berlisensi diberi published false dan disembunyikan dari daftar, filter, pencarian, saran destinasi lain, angka di beranda, serta rute statis. Datanya tetap disimpan supaya bisa dinyalakan begitu fotonya ada.",
+      "featured menandai destinasi yang tampil di bagian \"Destinasi pilihan\" beranda. Dipilih tangan dengan dua syarat: fotonya kuat dan berlisensi jelas, serta sebarannya merata antar wilayah dan kategori. Hanya destinasi published yang boleh featured."
     ],
     "imageRoot": "public/images/destinasi",
     "legacyImageRoot": "legacy/img/tempat"
@@ -52,6 +53,7 @@
       "region": "kota-yogyakarta",
       "category": "taman-hiburan",
       "published": true,
+      "featured": false,
       "tags": [
         "masangin",
         "ringin kembar",
@@ -134,6 +136,7 @@
       "region": "kota-yogyakarta",
       "category": "taman-hiburan",
       "published": true,
+      "featured": false,
       "tags": [
         "kebun binatang",
         "keluarga",
@@ -222,6 +225,7 @@
       "region": "kota-yogyakarta",
       "category": "desa-wisata",
       "published": true,
+      "featured": true,
       "tags": [
         "kerajinan perak",
         "mataram islam",
@@ -305,6 +309,7 @@
       "region": "kota-yogyakarta",
       "category": "budaya",
       "published": true,
+      "featured": false,
       "tags": [
         "malioboro",
         "pedestrian",
@@ -388,6 +393,7 @@
       "region": "kota-yogyakarta",
       "category": "budaya",
       "published": true,
+      "featured": false,
       "tags": [
         "keraton",
         "istana",
@@ -482,6 +488,7 @@
       "region": "kota-yogyakarta",
       "category": "budaya",
       "published": true,
+      "featured": false,
       "tags": [
         "museum",
         "benteng",
@@ -582,6 +589,7 @@
       "region": "kota-yogyakarta",
       "category": "budaya",
       "published": true,
+      "featured": false,
       "tags": [
         "museum",
         "wayang kulit",
@@ -675,6 +683,7 @@
       "region": "kota-yogyakarta",
       "category": "kuliner",
       "published": true,
+      "featured": false,
       "tags": [
         "pasar tradisional",
         "batik",
@@ -757,6 +766,7 @@
       "region": "kota-yogyakarta",
       "category": "taman-hiburan",
       "published": true,
+      "featured": false,
       "tags": [
         "wisata edukasi",
         "sains",
@@ -837,6 +847,7 @@
       "region": "kota-yogyakarta",
       "category": "budaya",
       "published": true,
+      "featured": false,
       "tags": [
         "kraton",
         "sejarah",
@@ -932,6 +943,7 @@
       "region": "sleman",
       "category": "taman-hiburan",
       "published": false,
+      "featured": false,
       "tags": [
         "wisata edukasi",
         "satwa",
@@ -985,6 +997,7 @@
       "region": "sleman",
       "category": "budaya",
       "published": true,
+      "featured": false,
       "tags": [
         "candi",
         "sunset",
@@ -1082,6 +1095,7 @@
       "region": "sleman",
       "category": "budaya",
       "published": true,
+      "featured": false,
       "tags": [
         "candi",
         "situs warisan dunia",
@@ -1186,6 +1200,7 @@
       "region": "sleman",
       "category": "desa-wisata",
       "published": false,
+      "featured": false,
       "tags": [
         "desa wisata",
         "live in",
@@ -1230,6 +1245,7 @@
       "region": "sleman",
       "category": "budaya",
       "published": true,
+      "featured": true,
       "tags": [
         "situs purbakala",
         "gapura",
@@ -1330,6 +1346,7 @@
       "region": "sleman",
       "category": "alam",
       "published": true,
+      "featured": false,
       "tags": [
         "jeep",
         "merapi",
@@ -1385,6 +1402,7 @@
       "region": "sleman",
       "category": "budaya",
       "published": true,
+      "featured": false,
       "tags": [
         "museum",
         "batik",
@@ -1478,6 +1496,7 @@
       "region": "sleman",
       "category": "kuliner",
       "published": true,
+      "featured": false,
       "tags": [
         "perbukitan",
         "sunset",
@@ -1558,6 +1577,7 @@
       "region": "sleman",
       "category": "alam",
       "published": true,
+      "featured": false,
       "tags": [
         "tebing",
         "pahatan batu",
@@ -1656,6 +1676,7 @@
       "region": "sleman",
       "category": "taman-hiburan",
       "published": true,
+      "featured": false,
       "tags": [
         "waterpark",
         "keluarga",
@@ -1734,6 +1755,7 @@
       "region": "bantul",
       "category": "desa-wisata",
       "published": true,
+      "featured": false,
       "tags": [
         "gerabah",
         "keramik",
@@ -1789,6 +1811,7 @@
       "region": "bantul",
       "category": "desa-wisata",
       "published": false,
+      "featured": false,
       "tags": [
         "batik kayu",
         "topeng",
@@ -1835,6 +1858,7 @@
       "region": "bantul",
       "category": "alam",
       "published": true,
+      "featured": false,
       "tags": [
         "gumuk pasir",
         "barchan",
@@ -1923,6 +1947,7 @@
       "region": "bantul",
       "category": "alam",
       "published": true,
+      "featured": true,
       "tags": [
         "hutan",
         "udara sejuk",
@@ -2015,6 +2040,7 @@
       "region": "bantul",
       "category": "desa-wisata",
       "published": true,
+      "featured": true,
       "tags": [
         "batik tulis",
         "pewarna alami",
@@ -2070,6 +2096,7 @@
       "region": "bantul",
       "category": "alam",
       "published": true,
+      "featured": false,
       "tags": [
         "negeri di atas awan",
         "sunrise",
@@ -2166,6 +2193,7 @@
       "region": "bantul",
       "category": "budaya",
       "published": true,
+      "featured": false,
       "tags": [
         "makam raja",
         "mataram",
@@ -2250,6 +2278,7 @@
       "region": "bantul",
       "category": "pantai",
       "published": true,
+      "featured": false,
       "tags": [
         "seafood",
         "tempat pelelangan ikan",
@@ -2337,6 +2366,7 @@
       "region": "bantul",
       "category": "pantai",
       "published": true,
+      "featured": false,
       "tags": [
         "cemara udang",
         "konservasi penyu",
@@ -2426,6 +2456,7 @@
       "region": "bantul",
       "category": "pantai",
       "published": true,
+      "featured": false,
       "tags": [
         "pantai selatan",
         "gumuk pasir",
@@ -2515,6 +2546,7 @@
       "region": "gunungkidul",
       "category": "desa-wisata",
       "published": false,
+      "featured": false,
       "tags": [
         "topeng kayu",
         "batik kayu",
@@ -2561,6 +2593,7 @@
       "region": "gunungkidul",
       "category": "alam",
       "published": true,
+      "featured": false,
       "tags": [
         "caving",
         "cahaya surga",
@@ -2650,6 +2683,7 @@
       "region": "gunungkidul",
       "category": "alam",
       "published": true,
+      "featured": false,
       "tags": [
         "cave tubing",
         "sungai bawah tanah",
@@ -2728,6 +2762,7 @@
       "region": "gunungkidul",
       "category": "alam",
       "published": true,
+      "featured": false,
       "tags": [
         "geopark",
         "pendakian",
@@ -2815,6 +2850,7 @@
       "region": "gunungkidul",
       "category": "kuliner",
       "published": true,
+      "featured": false,
       "tags": [
         "tebing",
         "laut selatan",
@@ -2894,6 +2930,7 @@
       "region": "gunungkidul",
       "category": "kuliner",
       "published": true,
+      "featured": false,
       "tags": [
         "panorama",
         "restoran",
@@ -2986,6 +3023,7 @@
       "region": "gunungkidul",
       "category": "pantai",
       "published": true,
+      "featured": false,
       "tags": [
         "teluk",
         "sungai bawah tanah",
@@ -3064,6 +3102,7 @@
       "region": "gunungkidul",
       "category": "pantai",
       "published": true,
+      "featured": false,
       "tags": [
         "pantai selatan",
         "pasir putih",
@@ -3145,6 +3184,7 @@
       "region": "gunungkidul",
       "category": "pantai",
       "published": true,
+      "featured": true,
       "tags": [
         "pantai selatan",
         "pura",
@@ -3234,6 +3274,7 @@
       "region": "gunungkidul",
       "category": "pantai",
       "published": true,
+      "featured": false,
       "tags": [
         "gondola",
         "jembatan gantung",
@@ -3296,6 +3337,7 @@
       "region": "kulon-progo",
       "category": "desa-wisata",
       "published": true,
+      "featured": false,
       "tags": [
         "pengamatan burung",
         "konservasi",
@@ -3351,6 +3393,7 @@
       "region": "kulon-progo",
       "category": "desa-wisata",
       "published": true,
+      "featured": false,
       "tags": [
         "kebun teh",
         "menoreh",
@@ -3441,6 +3484,7 @@
       "region": "kulon-progo",
       "category": "budaya",
       "published": true,
+      "featured": false,
       "tags": [
         "gua",
         "ramayana",
@@ -3500,6 +3544,7 @@
       "region": "kulon-progo",
       "category": "budaya",
       "published": true,
+      "featured": false,
       "tags": [
         "ziarah",
         "katolik",
@@ -3583,6 +3628,7 @@
       "region": "kulon-progo",
       "category": "pantai",
       "published": true,
+      "featured": false,
       "tags": [
         "laguna",
         "tetrapod",
@@ -3661,6 +3707,7 @@
       "region": "kulon-progo",
       "category": "pantai",
       "published": false,
+      "featured": false,
       "tags": [
         "konservasi penyu",
         "burung pantai",
@@ -3712,6 +3759,7 @@
       "region": "kulon-progo",
       "category": "alam",
       "published": true,
+      "featured": false,
       "tags": [
         "gardu pandang",
         "menoreh",
@@ -3775,6 +3823,7 @@
       "region": "kulon-progo",
       "category": "alam",
       "published": true,
+      "featured": true,
       "tags": [
         "mata air",
         "kolam alami",
@@ -3836,6 +3885,7 @@
       "region": "kulon-progo",
       "category": "alam",
       "published": true,
+      "featured": false,
       "tags": [
         "waduk",
         "danau",
@@ -3923,6 +3973,7 @@
       "region": "kulon-progo",
       "category": "alam",
       "published": true,
+      "featured": false,
       "tags": [
         "hutan kemasyarakatan",
         "gardu pandang",

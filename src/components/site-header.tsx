@@ -4,6 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { Logo } from "@/src/components/logo";
+
 const NAV = [
   { href: "/", label: "Beranda" },
   { href: "/destinasi", label: "Destinasi" },
@@ -40,9 +42,15 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-page items-center justify-between gap-4 px-gutter py-4">
         <Link
           href="/"
-          className="font-display text-h4 font-semibold tracking-tight text-text"
+          className="flex items-center gap-2 font-display text-h4 font-semibold tracking-tight text-text"
         >
-          Holiday<span className="text-accent">In</span>
+          <Logo />
+          {/* Kata "HolidayIn" dibungkus satu span sendiri: di dalam flex,
+              potongan teks telanjang akan jadi item tersendiri sehingga gap-2
+              ikut menyisip di antara "Holiday" dan "In". */}
+          <span>
+            Holiday<span className="text-accent">In</span>
+          </span>
         </Link>
 
         <nav aria-label="Navigasi utama" className="hidden sm:block">
