@@ -176,6 +176,18 @@ body {
   outline-offset: 2px;
 }
 
+/* Sorotan hanya untuk penunjuk yang benar-benar bisa melayang. Pada layar
+   sentuh keadaan :hover menempel setelah diketuk, sehingga garis aksen tertinggal
+   dan terlihat seperti cincin fokus padahal bukan. Cincin fokus sendiri sudah
+   diurus aturan :focus-visible di atas. */
+@custom-variant hover-fine {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @slot;
+    }
+  }
+}
+
 /* Baris pil yang digeser di layar sempit: batangnya disembunyikan karena
    sudah ada gradien di tepi kanan sebagai isyarat. */
 @utility scrollbar-none {

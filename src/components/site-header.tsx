@@ -71,7 +71,7 @@ export function SiteHeader() {
           aria-expanded={open}
           aria-controls="menu-seluler"
           aria-label={open ? "Tutup menu" : "Buka menu"}
-          className="rounded-field border border-line p-2.5 text-text transition-colors hover:border-accent hover:text-accent sm:hidden"
+          className="rounded-field border border-line p-2.5 text-text transition-colors hover-fine:border-accent hover-fine:text-accent sm:hidden"
         >
           <svg
             aria-hidden="true"

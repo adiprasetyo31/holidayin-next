@@ -1,4 +1,8 @@
 import data from "@/src/data/destinations.json";
+import {
+  categoryShortLabelFor,
+  regionShortLabelFor,
+} from "@/src/lib/taxonomy";
 
 export type RateVisitor = "local" | "foreign";
 export type RateDay = "all" | "weekday" | "weekend";
@@ -99,33 +103,17 @@ export function regionLabel(id: string): string {
 }
 
 /**
- * Label pendek untuk pil filter. Nilai datanya tidak berubah; hanya tampilannya
- * yang dipangkas supaya satu baris pil tetap ringkas di layar sempit.
- * Label panjang tetap dipakai di kartu dan halaman detail.
+ * Label pendek untuk pil filter dan navigasi beranda. Daftarnya tinggal di
+ * src/lib/taxonomy.ts supaya komponen klien bisa ikut memakainya tanpa menarik
+ * destinations.json; di sini hanya dibungkus agar label panjang dari data
+ * tetap jadi cadangan bila ada id baru yang belum terdaftar.
  */
-const REGION_SHORT: Record<string, string> = {
-  "kota-yogyakarta": "Kota Yogyakarta",
-  sleman: "Sleman",
-  bantul: "Bantul",
-  gunungkidul: "Gunungkidul",
-  "kulon-progo": "Kulon Progo",
-};
-
-const CATEGORY_SHORT: Record<string, string> = {
-  budaya: "Budaya",
-  pantai: "Pantai",
-  alam: "Alam",
-  "taman-hiburan": "Hiburan",
-  kuliner: "Kuliner",
-  "desa-wisata": "Desa Wisata",
-};
-
 export function regionShortLabel(id: string): string {
-  return REGION_SHORT[id] ?? regionLabel(id);
+  return regionShortLabelFor(id, regionLabel(id));
 }
 
 export function categoryShortLabel(id: string): string {
-  return CATEGORY_SHORT[id] ?? categoryLabel(id);
+  return categoryShortLabelFor(id, categoryLabel(id));
 }
 
 export function countByCategory(id: string): number {

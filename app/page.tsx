@@ -1,13 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { CategoryTiles } from "@/src/components/category-tiles";
 import { DestinationCard } from "@/src/components/destination-card";
+import { RegionCards } from "@/src/components/region-cards";
 import { buttonClass } from "@/src/components/ui/button";
 import {
-  categories,
-  countByCategory,
-  countByRegion,
-  destinasiHref,
   destinations,
   filledCategories,
   filledRegions,
@@ -83,38 +81,10 @@ export default function Home() {
 
       <section className="mx-auto max-w-page px-gutter py-block">
         <h2 className="font-display text-h2">Telusuri per wilayah</h2>
-        <ul className="mt-6 flex flex-wrap gap-3">
-          {filledRegions.map((region) => (
-            <li key={region.id}>
-              <Link
-                href={destinasiHref({ wilayah: region.id })}
-                className="inline-flex items-baseline gap-2 rounded-pill border border-line bg-surface px-5 py-2.5 text-caption transition-colors hover:border-accent hover:text-accent"
-              >
-                {region.label}
-                <span className="text-micro tracking-normal text-muted">
-                  {countByRegion(region.id)}
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <RegionCards />
 
         <h2 className="mt-block font-display text-h2">Telusuri per kategori</h2>
-        <ul className="mt-6 flex flex-wrap gap-3">
-          {categories.map((category) => (
-            <li key={category.id}>
-              <Link
-                href={destinasiHref({ kategori: category.id })}
-                className="inline-flex items-baseline gap-2 rounded-pill border border-line bg-surface px-5 py-2.5 text-caption transition-colors hover:border-accent hover:text-accent"
-              >
-                {category.label}
-                <span className="text-micro tracking-normal text-muted">
-                  {countByCategory(category.id)}
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <CategoryTiles />
       </section>
 
       <section className="mx-auto max-w-page px-gutter pb-8">
